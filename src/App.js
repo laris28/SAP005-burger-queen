@@ -1,18 +1,30 @@
 import logo from './logo.svg';
-import React, {useState, useEffect } from 'react';
 import './App.css';
+import React from 'react'
+import Login from '../src/pages/Login'
 
-import User from './components/User';
-const data = [
-  {
-    name:'isa',
-    description: 'prof'
-  },
-  {
-    name: 'Eu ',
-    description:'mesa '
+/*import User from './components/User'; */
+
+function App() {
+return (
+<div className="App">
+<Login />
+
+   
+  </div>	
+  );
   }
-];
+ /* const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  return (
+
+  ),*/
+
+      
+//console.log(name);
+//console.log();
 
 
 
