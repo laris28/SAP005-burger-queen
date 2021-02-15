@@ -1,10 +1,11 @@
-const User = () => {
-  return (
-    <div>
-        <p>Laris</p>
-        <p>Gosta de chocolate</p>
-    </div>
-  );
-}
-
-export default User;
+const User = ({name, description}) => {
+    return (
+      <div>
+          <p>{name}</p>
+          <p>{description}</p>
+      </div>
+    );
+  }
+  
+  export default User;
+  
