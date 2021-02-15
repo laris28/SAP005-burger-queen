@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+/*import logo from './logo.svg';*/
 import './App.css';
 import React from 'react';
 import {useHistory} from 'react-router-dom'
@@ -11,8 +11,8 @@ function App() {
   const InputEmail = document.querySelector("#InputEmail");	
   const InputPassword = document.querySelector("#InputPassword");	
   const InputRole = document.querySelector("#InputRole");	
-  
-  function InputBtn(e) {	
+
+  /*function InputBtn(e) {	
     e.preventDefault();	
 
     fetch('https://lab-api-bq.herokuapp.com/users/', {	
@@ -33,13 +33,13 @@ function App() {
         InputRole.value = "";	
         InputName.value = "";	
       })	
-  };	
+  };	*/
 
   const routerRegister=()=>{
-    history.push('/cadastro')
+    history.push('/Register')
   }
   const routerLogin=()=>{
-    history.push('/login')
+    history.push('/Login')
   }
   return (	 
     <div className="App">	   

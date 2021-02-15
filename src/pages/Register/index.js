@@ -40,7 +40,7 @@ return (
         <button className="InputBtn" onClick={(e) => {	       
           e.preventDefault();
 
-         fetch('http://lab-api-bq.herokuapp.com/users/', {   
+        /* fetch('http://lab-api-bq.herokuapp.com/users/', {   
            method: 'POST',
             headers: {	        
               'accept': 'application/json',	              
