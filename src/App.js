@@ -1,32 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-import React from 'react'
-import Login from '../src/pages/Login'
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Login } from './pages/Login';
+import { Register } from './pages/Register';
+import { Kitchen } from './pages/Kitchen';
+import { Menu } from './pages/Menu';
 
-/*import User from './components/User'; */
-
-function App() {
-return (
-<div className="App">
-<Login />
-
-   
-  </div>	
-  );
-  }
- /* const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+export const App = () => {
   return (
-
-  ),*/
-
-      
-//console.log(name);
-//console.log();
-
-
-
+  <BrowserRouter>
+    <Switch>
+      <Route path='/' exact component={Login} />
+      <Route path='/register' component={Register} />
+      <Route path='/menu' component={Menu}/>
+      <Route path='/kitchen' component={Kitchen}/>
+    </Switch>
+  </BrowserRouter>
+  )
+};
 
 export default App;
+

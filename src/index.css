@@ -19,7 +19,7 @@ code {
     monospace;
 }
 
-.Login{
+.Login, .Register{
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -28,14 +28,19 @@ code {
   justify-content: space-around;
 }
 
-.login{
+.Register{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.login, .register{
   border: 10px solid #ad3f08;
   padding: 20px;
   background: #ffffff;
   border-radius: 30px;
 }
 
-input{
+input, .form-button, .button{
   height: 5vh;
   width: 17vw;
   font-size: 1em;
@@ -45,7 +50,12 @@ input{
   border: 3px solid
 }
 
-.form-button{
+.select{
+  height: 3vh;
+  width: 10vw;
+}
+
+.form-button, .button{
   background-color: #ad3f08;
   font-size: 16px;
   color: #ffffff;
@@ -57,3 +67,7 @@ h1, input{
   color: #ad3f08;
 }
 
+div{
+  display: flex;
+	align-items: center;
+}

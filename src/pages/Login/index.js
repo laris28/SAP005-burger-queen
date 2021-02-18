@@ -1,41 +1,68 @@
-import React, {useState} from 'react';
-/*import '.login.css'*/
+import { Link, useHistory } from 'react-router-dom';
+import React, {useState} from 'react'
 
-const Login =()  =>{
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [show, setShow] = useState(false)
+export const Login = () => {
+    
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const path = useHistory();
 
-    /*const handleClick = (e) => {
-        e.preventDefalt()
-        setShow(!show);
-    }*/
+    const directMenu = () => {
+    path.push('/menu')
+    }
+  
+    const directKitchen = () => {
+      path.push('/kitchen')
+    }
+  
 
+    const test = () => {
+        fetch('https://lab-api-bq.herokuapp.com/auth', {
+          body:`email=${email}&password=${password}` ,
+          method: 'POST',
+          headers: {
+            'accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          
+          },
+          
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            setEmail('')
+            setPassword('')
+            console.log(data)
+            if(data.role === "waiter"){
+              directMenu();
+            }
+            else if(data.role === "cooker"){
+              directKitchen();
+            }
+
+
+          })
+      }
     return (
+      <>
         <div className="Login">
-            
-                <form class="login">	
-                    <h1>BURGER QUEEN</h1>
-                    <label htmlFor="email" className="label">E-mail:</label>	
-                    <br></br>
-                    <input className="input" type="text" value={email} onChange={e => setEmail(e.target.valeu)} name="email"></input>	
-                    <br></br>		
-                    <label htmlFor="password" className="label">Senha:</label>	
-                    <br></br>	
-                    <input className="input" type={ show ? "text" : "password"}
-                    value={password} onChange={e => setPassword(e.target.value)} name="password"></input>	
-                    <br></br>
-        
-        {/* <div className="login-eye"> {show ? (<HiEye size={20} onClick={handleClick} />) : (<HiEyeOff size={20} onClick={handleClick} />)} </div></br>*/}	
-
-                    <input type="submit" className="form-button" value="Entrar"></input>	
-                    <p className="p-bottom">Ainda não possui conta? <a href="/Register">Cadastre-se</a></p>	
-        
-                </form>	
-            
+            <form class="login">	
+                <h1>BURGER QUEEN</h1>
+                <input className="input" type="email" placeholder="Informe seu email" value={email} onChange={e=> setEmail(e.target.value)}/>
+                <br></br>
+                <input className="input" type="password" placeholder="Informe sua senha" value={password} onChange={e=> setPassword(e.target.value)}/>
+                <br></br>
+                <button className="form-button" type='submit' onClick={(e) => {
+                e.preventDefault();
+                test();
+                }}>Logar</button>
+                <br></br>
+                <p className="p-bottom">Ainda não possui conta? <Link to="/register">Cadastre-se</Link></p>
+            </form>
         </div>
-    )
-}
+      </>
+    );
+};
 
 
-export default Login;
+    
