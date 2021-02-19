@@ -2,9 +2,6 @@ import {useEffect, useState} from 'react'
 import { useHistory } from "react-router-dom";
 
 
-  
-
-
 export const Menu = () => {
   const [menu, setMenu] = useState([]);
   let token = localStorage.getItem('token');
