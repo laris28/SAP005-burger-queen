@@ -33,6 +33,7 @@ export const Login = () => {
             setEmail('')
             setPassword('')
             console.log(data)
+            localStorage.setItem('token', data.token);
             if(data.role === "waiter"){
               directMenu();
             }
@@ -46,7 +47,7 @@ export const Login = () => {
     return (
       <>
         <div className="Login">
-            <form class="login">	
+            <form className="login">	
                 <h1>BURGER QUEEN</h1>
                 <input className="input" type="email" placeholder="Informe seu email" value={email} onChange={e=> setEmail(e.target.value)}/>
                 <br></br>
