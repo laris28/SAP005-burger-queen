@@ -54,12 +54,14 @@ fetch("https://lab-api-bq.herokuapp.com/products", requestOptions)
           <br></br>
           <h2>Café da Manhã</h2>
 
-         <input type = "text" value={client} onChange={e=> setClient(e.target.value)}/>
+         <input type = "text" placeholder = "Client" value={client} onChange={e=> setClient(e.target.value)}/>
          <input type = "text" placeholder = "Mesa" value={table} onChange={e=> setTable(e.target.value)}/>
          <button className="form-button" type='submit' onClick={(e) => {
                 e.preventDefault();
                 handleSend();
                 }}>Enviar Pedido</button>
+
+                
     </>
 
     );
