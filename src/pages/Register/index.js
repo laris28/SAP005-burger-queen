@@ -36,7 +36,7 @@ export const Register = () => {
     return (
         <>
         <div className="Register">
-            <form class="register" onSubmit={sendRegistration}>
+            <form className="register" onSubmit={sendRegistration}>
                 <h1>BURGER QUEEN</h1>
                 <input type='text' className='userInput' placeholder='Nome do usuario' onChange={(e) => registrationData({...signIn, 'name' : e.target.value})} />
                 <br></br>
