@@ -5,7 +5,6 @@ body {
   background-size: cover;
   background-position: top center;
   color: rgb(107, 58, 58);
-
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -33,14 +32,14 @@ code {
   padding-right: 30px;
 }
 
-.login, .register{
+.login, .register, .cardapio{
   border: 10px solid #ad3f08;
   padding: 20px;
   background: #ffffff;
   border-radius: 30px;
 }
 
-input, .form-button, .button{
+input, .form-button, .button, .cafe{
   height: 5vh;
   width: 17vw;
   font-size: 1em;
@@ -55,10 +54,18 @@ input, .form-button, .button{
   width: 10vw;
 }
 
-.form-button, .button{
+.form-button, .button, .cafe{
   background-color: #ad3f08;
   font-size: 16px;
   color: #ffffff;
+}
+
+.cafe{
+  height: 10vh;
+  width: 20vw
+}
+
+.form-button, .button{
   height: 7vh;
   width: 19vw
 }
@@ -89,6 +96,7 @@ div{
 	flex-direction: column;
 	flex-wrap: nowrap;
 	justify-content: center;
-	align-items: baseline;
+  width: 90%;
+  height: 90%;
 }
 
