@@ -83,40 +83,12 @@ div{
   height: 100%;
 }
 
-.container {
-  perspective: 1000px;
-  width: 30%;
-  height: 330px;
-  margin: 0 2.5% 40px 2.5%;
-}
-
-.card:nth-child(3n) {
-  margin-right: 0;
-}
-
-.card:nth-child(3n+1) {
-  margin-left: 0;
-}
-
-
-.card-container {
+.cardapio {
+  padding-left: 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  text-align: center;
-  /* box-shadow: 4px 4px 20px rgba(197, 143, 43, 0.919); */
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: baseline;
 }
 
-
-
-.card-container p {
-  margin: 5px 0;
-}
