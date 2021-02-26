@@ -7,11 +7,11 @@ export const Login = () => {
     const [password, setPassword] = useState("");
     const path = useHistory();
 
-    const directMenu = () => {
+    const menu = () => {
     path.push('/menu')
     }
   
-    const directKitchen = () => {
+    const kitchen = () => {
       path.push('/kitchen')
     }
   
@@ -35,10 +35,10 @@ export const Login = () => {
             console.log(data)
             localStorage.setItem('token', data.token);
             if(data.role === "waiter"){
-              directMenu();
+              menu();
             }
             else if(data.role === "cooker"){
-              directKitchen();
+              kitchen();
             }
 
 

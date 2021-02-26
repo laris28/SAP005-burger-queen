@@ -7,11 +7,11 @@ export const Register = () => {
     const [signIn, registrationData] = useState({'restaurant': 'burguer queen'});
     const path = useHistory();
 
-    const directMenu = () => {
+    const menu = () => {
     path.push('/menu')
     }
   
-    const directKitchen = () => {
+    const kitchen = () => {
     path.push('/kitchen')
     }
     const sendRegistration = (e) => {
@@ -25,10 +25,10 @@ export const Register = () => {
         .then((data) => {
             console.log(data)
         if(data.role === "waiter"){
-            directMenu();
+            menu();
           }
           else if(data.role === "cooker"){
-            directKitchen();
+            kitchen();
           }
         })
     }

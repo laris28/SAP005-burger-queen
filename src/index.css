@@ -5,8 +5,6 @@ body {
   background-size: cover;
   background-position: top center;
   color: rgb(107, 58, 58);
-
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -33,14 +31,14 @@ code {
   padding-right: 30px;
 }
 
-.login, .register{
+.login, .register, .cardapio{
   border: 10px solid #ad3f08;
   padding: 20px;
   background: #ffffff;
   border-radius: 30px;
 }
 
-input, .form-button, .button{
+input, .form-button, .button, .cafe{
   height: 5vh;
   width: 17vw;
   font-size: 1em;
@@ -55,10 +53,18 @@ input, .form-button, .button{
   width: 10vw;
 }
 
-.form-button, .button{
+.form-button, .button, .cafe{
   background-color: #ad3f08;
   font-size: 16px;
   color: #ffffff;
+}
+
+.cafe{
+  height: 10vh;
+  width: 20vw
+}
+
+.form-button, .button{
   height: 7vh;
   width: 19vw
 }
@@ -83,40 +89,13 @@ div{
   height: 100%;
 }
 
-.container {
-  perspective: 1000px;
-  width: 30%;
-  height: 330px;
-  margin: 0 2.5% 40px 2.5%;
-}
-
-.card:nth-child(3n) {
-  margin-right: 0;
-}
-
-.card:nth-child(3n+1) {
-  margin-left: 0;
-}
-
-
-.card-container {
+.cardapio {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  text-align: center;
-  /* box-shadow: 4px 4px 20px rgba(197, 143, 43, 0.919); */
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+  width: 90%;
+  height: 90%;
 }
 
 
-
-.card-container p {
-  margin: 5px 0;
-}

@@ -19,6 +19,7 @@ export const Menu = () => {
     })
     
   }
+
   const postOrders = () => {
     const token = localStorage.getItem('token');
     fetch("https://lab-api-bq.herokuapp.com/orders", {
@@ -27,9 +28,7 @@ export const Menu = () => {
         "Authorization": token,
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(raw),
-      // redirect: 'follow'
-      
+      body: JSON.stringify(raw),      
     })
     .then(response => response.json())
     .then(result => console.log(result))
@@ -44,22 +43,31 @@ export const Menu = () => {
 
   return (
     <>
-      <h1>Bem vindo ao menu</h1>
-      <br></br>
-      <h2>Café da Manhã</h2>
-      {menu.map(function(item){
-        console.log(item)
-        return(
-          <p key={item.id}>{item.name}</p>
-        )
-      })}
-
-      <input type = "text" placeholder = "Client" value={client} onChange={e=> setClient(e.target.value)}/>
-      <input type = "text" placeholder = "Mesa" value={table} onChange={e=> setTable(e.target.value)}/>
-      <button className="form-button" type='submit' onClick={(e) => {
-        e.preventDefault();
-        postOrders();
-      }}>Enviar Pedido</button>
+      <div className="cardapio">
+        <h1>Bem vindo ao menu</h1>
+        <div className="cafe">
+          <h2>Menu do café da manhã</h2>
+        </div>
+          {menu.map(function(item){
+            console.log(item)
+            return(
+                <li key={item.id }>
+                  <div className="hamburgers-thumb">
+                    <img src={item.image} alt={`${item.name}`} />
+                  </div>
+                  <p>{ item.name }</p>
+                  <p>R${ item.price }</p>
+                  <button onClick={() => (item)}>Adicionar</button>
+                </li>
+            )
+          })}
+        <input type = "text" placeholder = "Client" value={client} onChange={e=> setClient(e.target.value)}/>
+        <input type = "text" placeholder = "Mesa" value={table} onChange={e=> setTable(e.target.value)}/>
+        <button className="form-button" type='submit' onClick={(e) => {
+          e.preventDefault();
+          postOrders();
+        }}>Enviar Pedido</button>
+      </div>
     </>
   );
 }
