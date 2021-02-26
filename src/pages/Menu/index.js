@@ -208,7 +208,7 @@ export const Menu = () => {
             )
           })}
           </div>
-        <input type = "text" placeholder = "Client" value={client} onChange={e=> setClient(e.target.value)}/>
+        <input type = "text" placeholder = "client" value={client} onChange={e=> setClient(e.target.value)}/>
         <input type = "text" placeholder = "Mesa" value={table} onChange={e=> setTable(e.target.value)}/>
         <button className="form-button" type='submit' onClick={(e) => {
           e.preventDefault();
