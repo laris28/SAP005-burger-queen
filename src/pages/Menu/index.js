@@ -47,9 +47,9 @@ export const Menu = () => {
     return {
       id: product.id, 
       qtd: 1,
-
     }
     })
+
     const requestQtd = addProdutos.reduce(
       function(x, y) { //x= id, y=qtd
         x[y.id] = x[y.id]||[];
@@ -62,7 +62,6 @@ export const Menu = () => {
         list.push({
           id: key,
           qtd: value.length,
-
         })
       }
 
@@ -96,126 +95,113 @@ export const Menu = () => {
       setTotal([]);
       setProductPrice([]);
       setDeletProduct([]);
-      setItens([]);
-      setPedidos({});
+      setItens({});
+      setPedidos([]);
     })
     .catch(error => console.log('error', error));
   }
 
+
   return (
-    <div className="cardapio">
-      <h1>Bem vindo ao menu</h1>
-      <h2 className="cafe">Menu do café da manhã</h2>
-      <div>
-        {menuCafe.map((item) => {
-        console.log(item)
-          return(
-              <div>
-                <li key={item.id }>
-                  <div className="menuProducts">
-                    <img src={item.image} alt={`${item.name}`} />
-                  </div>
-                  <p>{ item.name }</p>
-                  <p>R${ item.price }</p>
-                  <button onClick={() => { 
-                    handleAddItens(item);
-                  }}>Adicionar</button>
-                </li>
+    <div>
+      <table className='itens'>
+        <tbody>
+          <tr>
+            <th>Café da Manhã</th>
+            <th>Preço</th>
+          </tr>
+          {menuCafe.map((produto) => (
+            <tr key={produto.id}>
+              <div className="menuProducts">
+                <img src={produto.image} alt={`${produto.name}`} />
               </div>
-            )
-          })}
-          </div>
-          <div>
-            <h2 className="cafe">Menu do dia</h2>
-          {menuHamburgers.map((item) => {
-            console.log(item)
-            return(
-              <div>
-                <li key={item.id }>
-                  <div className="menuProducts">
-                    <img src={item.image} alt={`${item.name}`} />
-                  </div>
-                  <p>{ item.name }</p>
-                  <p>R${ item.price }</p>
-                  <button onClick={() => { 
-                    handleAddItens(item);
-                  }}>Adicionar</button>
-                </li>
-              </div>
-            )
-          })}
-          </div>
-          <div>
-            <h2 className="cafe">Menu de bebidas</h2>
-           {menuBebidas.map((item) => {
-            console.log(item)
-            return(
-              <div>
-                <li key={item.id }>
-                  <div className="menuProducts">
-                    <img src={item.image} alt={`${item.name}`} />
-                  </div>
-                  <p>{ item.name }</p>
-                  <p>R${ item.price }</p>
-                  <button onClick={() => { 
-                    handleAddItens(item);
-                  }}>Adicionar</button>
-                </li>
-              </div>
-               
-            )
-          })}
-          </div>
-          <div>
-            <h2 className="cafe">Adicionais</h2>
-           {side.map((item) => {
-            console.log(item)
-            return(
-              <div>
-                <li key={item.id }>
-                  <div className="menuProducts">
-                    <img src={item.image} alt={`${item.name}`} />
-                  </div>
-                  <p>{ item.name }</p>
-                  <p>R${ item.price }</p>
-                  <button onClick={() => { 
-                    handleAddItens(item);
-                  }}>Adicionar</button>
-                </li>
-              </div>
+              <td>{produto.name}</td>
+              <td>R$ {produto.price},00</td>
+              <td>
+                <button onClick={() => handleAddItens(produto)}>+</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-            )
-          })}
-          </div>
-          <div>
-            <h2 className="cafe">Total</h2>
-          {listItens.map((item) => {
-            console.log(item)
-            return(
-              <div>
-                <li key={item.id }>
-                  <div className="menuProducts">
-                    <img src={item.image} alt={`${item.name}`} />
-                  </div>
-                  <p>{ item.name }</p>
-                  <p>{ item.price }</p>
-                  <button onClick={() => { 
-                    handleDelite(item);
-                  }}>Deletar</button>                
-                </li>
+      <table className='itens'>
+        <tbody>
+          <tr>
+            <th>Hambúrgueres</th>
+            <th>Adicionais</th>
+            <th>Preço</th>
+          </tr>
+          {menuHamburgers.map((produto) => (
+            <tr key={produto.id}>
+              <div className="menuProducts">
+                <img src={produto.image} alt={`${produto.name}`} />
               </div>
+              <td>{produto.name + ' ' + produto.flavor}</td>
+              <td>{produto.complement === 'null' ? '' : produto.complement}</td>
+              <td>R$ {produto.price},00</td>
+              <td>
+                <button onClick={() => handleAddItens(produto)}>+</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-            )
-          })}
-          </div>
-        <input type = "text" placeholder = "Client" value={client} onChange={e=> setClient(e.target.value)}/>
+      <table className='itens'>
+        <tbody>
+          <tr>
+            <th>Acompanhamentos</th>
+            <th>Preço</th>
+          </tr>
+          {side.map((produto) => (
+            <tr key={produto.id}>
+              <div className="menuProducts">
+                <img src={produto.image} alt={`${produto.name}`} />
+              </div>
+              <td>{produto.name}</td>
+              <td>R$ {produto.price},00</td>
+              <td>
+                <button onClick={() => handleAddItens(produto)}>+</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <table className='itens'>
+        <tbody>
+          <tr>
+            <th>Bebidas</th>
+            <th>Preço</th>
+          </tr>
+          {menuBebidas.map((produto) => (
+            <tr key={produto.id}>
+              <div className="menuProducts">
+                <img src={produto.image} alt={`${produto.name}`} />
+              </div>
+              <td>{produto.name}</td>
+              <td>R$ {produto.price},00</td>
+              <td>
+                <button onClick={() => handleAddItens(produto)}>+</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <h3>Total</h3>
+      <h3>R${total}</h3>
+      <button onClick={() => handleTotalItens()}>Totalizar itens</button>
+      <button onClick={() => postOrders()}>Finalizar pedido</button>
+      <input type = "text" placeholder = "Client" value={client} onChange={e=> setClient(e.target.value)}/>
         <input type = "text" placeholder = "Mesa" value={table} onChange={e=> setTable(e.target.value)}/>
         <button className="form-button" type='submit' onClick={(e) => {
           e.preventDefault();
           postOrders();
         }}>Enviar Pedido</button>
-      </div>
+    </div>
   );
-}
+};
 
 export default Menu;
+
