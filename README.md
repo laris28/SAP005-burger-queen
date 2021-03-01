@@ -318,7 +318,7 @@ As seções chamadas Hacker Edition são opcionais. Se você terminou tudo e ain
 #### HU 4: Entrega de pedidos
 
 - [ ] Visualizar pedidos pendentes para entrega.
-- [ ] Marcar pedido como entregue ao cliente.
+- [ ] Marcar pedido como entregue ao cliente
 
 ### UX
 
