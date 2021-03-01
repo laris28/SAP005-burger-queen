@@ -1,221 +1,236 @@
-import {useEffect, useState} from 'react'
-import { useHistory } from "react-router-dom";
-
+import React, { useEffect, useState } from 'react';
 
 export const Menu = () => {
-  const [client,setClient] = useState('');
-  const [table,setTable] = useState('');
-  const [send, setSend] = useState('');
-
+  const token = localStorage.getItem("token");
+  const [listItems, setItems] = useState([]);
   const [menuHamburgers, setHamburgers] = useState([]);
   const [orderPedidos, setPedidos] = useState([]);
   const [menuCafe, setCafe] = useState([]);
   const [side, setSide] = useState([]);
   const [menuBebidas, setBebidas] = useState([]);
-  const [listItens, setItens] = useState([]); //add todos os produtos
-  const [deleteProduct, setDeletProduct] = useState([]);
-  const [total, setTotal] = useState([]);
   const [productPrice, setProductPrice] = useState([]);
-  
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    return fetch("https://lab-api-bq.herokuapp.com/products", {
-      method: 'GET',
-      headers: {Authorization: token},
-      redirect: 'follow'
-    })
-    .then(response => response.json())
-    .then(result => {
-      const item = result;
-      const drinks = item.filter((product) => product.sub_type.includes("drinks"));
-      const cafe = item.filter((product) => product.type.includes("breakfast"));
-      const hamburgers = item.filter((product) => product.sub_type.includes("hamburguer"));
-      const acompanhamentos = item.filter((product) => product.sub_type.includes("side"));
-      setBebidas(drinks);
-      setCafe(cafe);
-      setHamburgers(hamburgers);
-      setSide(acompanhamentos);
-    })
-    .catch(error => console.log('error', error));
-  }, []);
+  const [DeletProduct, setDeletProduct] = useState([]);
+  const [total, setTotal] = useState([]);
 
-  const handleAddItens = (product) => {
-    setPedidos([...listItens, product]);
-    setProductPrice([...productPrice, product]);
+useEffect(() => {
+  fetch("https://lab-api-bq.herokuapp.com/products", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${token}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const itens = data;
+      const coffeeItems = itens.filter((products) =>
+        products.type.includes("breakfast")
+      );
+      const burgers = itens.filter((products) =>
+        products.sub_type.includes("hamburguer")
+      );
+      const sideDish = itens.filter((products) =>
+        products.sub_type.includes("side")
+      );
+      const drink = itens.filter((products) =>
+        products.sub_type.includes("drinks")
+      );
+      setBebidas(drink);
+      setSide(sideDish);
+      setHamburgers(burgers);
+      setCafe(coffeeItems);
+    })
+    .catch((error) => console.log("error", error));
+}, []);
 
-    const addProdutos = listItens.map((product) => {
+const handleAddItems = (product) => {
+  setItems([...listItems, product]);
+  setProductPrice([...productPrice, product.price]);
+  const addProduct = listItems.map((product) => {
     return {
-      id: product.id, 
+      id: product.id,
       qtd: 1,
+    };
+  });
+  const requestQtd = addProduct.reduce(function (x, y) {
+    x[y.id] = x[y.id] || [];
+    x[y.id].push(y);
+    return x;
+  }, Object.create(null));
 
-    }
-    })
-    const requestQtd = addProdutos.reduce(
-      function(x, y) { //x= id, y=qtd
-        x[y.id] = x[y.id]||[];
-        x[y.id].push(y);
-        return x;
-      }, Object.create(null));
-
-    const list = [];
-      for (const [key, value] of Object.entries(requestQtd)) {
-        list.push({
-          id: key,
-          qtd: value.length,
-
-        })
-      }
-
-      setItens({...orderPedidos, products: list});
-      console.log(orderPedidos)
+  const list = [];
+  for (const [key, value] of Object.entries(requestQtd)) {
+    list.push({
+      id: key,
+      qtd: value.length,
+    });
   }
 
-  const handleTotalItens = () => {
-    setTotal(productPrice.reduce((total, num) => total + num));
-  }
+  setPedidos({ ...orderPedidos, products: list });
+  console.log(orderPedidos);
+};
 
-  const handleDelite = (product) => {
-    setTotal(productPrice.splice(listItens.indexOf(product), 1));
-    setDeletProduct(listItens.splice(listItens.indexOf(product), 1));
-    handleTotalItens();
-  }
+const handleTotalItems = () => {
+  setTotal(productPrice.reduce((total, num) => total + num));
+}
 
-  const postOrders = () => {
-    const token = localStorage.getItem('token');
-    fetch("https://lab-api-bq.herokuapp.com/orders", {
-      method: 'POST',
-      headers: {
-        "Authorization": token,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(orderPedidos),      
-    })
-    .then(response => {
+const handleDelete = (product) => {
+  setTotal(productPrice.splice(listItems.indexOf(product), 1));
+  setDeletProduct(listItems.splice(listItems.indexOf(product), 1));
+  handleTotalItems();
+}
+
+const submitOrder = () => {
+  fetch("https://lab-api-bq.herokuapp.com/orders", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `${token}`,
+    },
+    body: JSON.stringify(orderPedidos),
+  })
+    .then((response) => {
       response.json()
-      .then(result => console.log(result));
+      .then((data) => console.log(data));
+      setPedidos({});
+      setItems([]);
       setTotal([]);
       setProductPrice([]);
       setDeletProduct([]);
-      setItens([]);
-      setPedidos({});
+      alert('Pedido criado com sucesso!')
     })
-    .catch(error => console.log('error', error));
-  }
+    .catch((error) => console.log("error", error));
+  };
+
 
   return (
-    <div className="cardapio">
-      <h1>Bem vindo ao menu</h1>
-      <h2 className="cafe">Menu do café da manhã</h2>
-      <div>
-        {menuCafe.map((item) => {
-        console.log(item)
-          return(
-              <div>
-                <li key={item.id }>
-                  <div className="menuProducts">
-                    <img src={item.image} alt={`${item.name}`} />
-                  </div>
-                  <p>{ item.name }</p>
-                  <p>R${ item.price }</p>
-                  <button onClick={() => { 
-                    handleAddItens(item);
-                  }}>Adicionar</button>
-                </li>
+    <div>
+      <table className='itens'>
+        <tbody>
+          <tr>
+            <th>Café da Manhã</th>
+            <th>Preço</th>
+          </tr>
+          {menuCafe.map((produto) => (
+            <tr key={produto.id}>
+              <div className="menuProducts">
+                <img src={produto.image} alt={`${produto.name}`} />
               </div>
-            )
-          })}
-          </div>
-          <div>
-            <h2 className="cafe">Menu do dia</h2>
-          {menuHamburgers.map((item) => {
-            console.log(item)
-            return(
-              <div>
-                <li key={item.id }>
-                  <div className="menuProducts">
-                    <img src={item.image} alt={`${item.name}`} />
-                  </div>
-                  <p>{ item.name }</p>
-                  <p>R${ item.price }</p>
-                  <button onClick={() => { 
-                    handleAddItens(item);
-                  }}>Adicionar</button>
-                </li>
-              </div>
-            )
-          })}
-          </div>
-          <div>
-            <h2 className="cafe">Menu de bebidas</h2>
-           {menuBebidas.map((item) => {
-            console.log(item)
-            return(
-              <div>
-                <li key={item.id }>
-                  <div className="menuProducts">
-                    <img src={item.image} alt={`${item.name}`} />
-                  </div>
-                  <p>{ item.name }</p>
-                  <p>R${ item.price }</p>
-                  <button onClick={() => { 
-                    handleAddItens(item);
-                  }}>Adicionar</button>
-                </li>
-              </div>
-               
-            )
-          })}
-          </div>
-          <div>
-            <h2 className="cafe">Adicionais</h2>
-           {side.map((item) => {
-            console.log(item)
-            return(
-              <div>
-                <li key={item.id }>
-                  <div className="menuProducts">
-                    <img src={item.image} alt={`${item.name}`} />
-                  </div>
-                  <p>{ item.name }</p>
-                  <p>R${ item.price }</p>
-                  <button onClick={() => { 
-                    handleAddItens(item);
-                  }}>Adicionar</button>
-                </li>
-              </div>
+              <td>{produto.name}</td>
+              <td>R$ {produto.price},00</td>
+              <td>
+                <button onClick={() => handleAddItems(produto)}>+</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-            )
-          })}
-          </div>
-          <div>
-            <h2 className="cafe">Total</h2>
-          {listItens.map((item) => {
-            console.log(item)
-            return(
-              <div>
-                <li key={item.id }>
-                  <div className="menuProducts">
-                    <img src={item.image} alt={`${item.name}`} />
-                  </div>
-                  <p>{ item.name }</p>
-                  <p>{ item.price }</p>
-                  <button onClick={() => { 
-                    handleDelite(item);
-                  }}>Deletar</button>                
-                </li>
+      <table className='itens'>
+        <tbody>
+          <tr>
+            <th>Hambúrgueres</th>
+            <th>Adicionais</th>
+            <th>Preço</th>
+          </tr>
+          {menuHamburgers.map((produto) => (
+            <tr key={produto.id}>
+              <div className="menuProducts">
+                <img src={produto.image} alt={`${produto.name}`} />
               </div>
+              <td>{produto.name + ' ' + produto.flavor}</td>
+              <td>{produto.complement === 'null' ? '' : produto.complement}</td>
+              <td>R$ {produto.price},00</td>
+              <td>
+                <button onClick={() => handleAddItems(produto)}>+</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-            )
-          })}
-          </div>
-        <input type = "text" placeholder = "client" value={client} onChange={e=> setClient(e.target.value)}/>
-        <input type = "text" placeholder = "Mesa" value={table} onChange={e=> setTable(e.target.value)}/>
-        <button className="form-button" type='submit' onClick={(e) => {
-          e.preventDefault();
-          postOrders();
-        }}>Enviar Pedido</button>
-      </div>
+      <table className='itens'>
+        <tbody>
+          <tr>
+            <th>Acompanhamentos</th>
+            <th>Preço</th>
+          </tr>
+          {side.map((produto) => (
+            <tr key={produto.id}>
+              <div className="menuProducts">
+                <img src={produto.image} alt={`${produto.name}`} />
+              </div>
+              <td>{produto.name}</td>
+              <td>R$ {produto.price},00</td>
+              <td>
+                <button onClick={() => handleAddItems(produto)}>+</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <table className='itens'>
+        <tbody>
+          <tr>
+            <th>Bebidas</th>
+            <th>Preço</th>
+          </tr>
+          {menuBebidas.map((produto) => (
+            <tr key={produto.id}>
+              <div className="menuProducts">
+                <img src={produto.image} alt={`${produto.name}`} />
+              </div>
+              <td>{produto.name}</td>
+              <td>R$ {produto.price},00</td>
+              <td>
+                <button onClick={() => handleAddItems(produto)}>+</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <table className='itens'>
+        <tbody>
+          <tr>
+            <th>Produtos adicionados</th>
+          </tr>
+          {listItems.map((produto) => (
+            <tr key={produto.id}>
+              <div className="menuProducts">
+                <img src={produto.image} alt={`${produto.name}`} />
+              </div>
+              <td>{produto.name}</td>
+              <td>{produto.complement === "null" ? "" : produto.complement}</td>
+              <td>R$ {produto.price},00</td>
+              <td>
+                <button onClick={() => handleDelete(produto)}>Deletar</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+        <label>Name:</label><br/>
+        <input
+          name="name"
+          type="text"
+          onChange={(e) => setPedidos({ ...orderPedidos, client: e.target.value })}
+        /><br/>
+        <label>Numero da mesa:</label><br/>
+        <input
+          name="table"
+          type="text"
+          onChange={(e) => setPedidos({ ...orderPedidos, table: e.target.value })}
+        /><br/>
+        <div>
+          <h3>Total</h3>
+          <h3>R${total}</h3>
+          <button onClick={() => handleTotalItems()}>Totalizar itens</button>
+          <button onClick={() => submitOrder()}>Finalizar pedido</button>
+        </div>
+    </div>
   );
 }
-
 export default Menu;
