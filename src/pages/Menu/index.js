@@ -103,7 +103,6 @@ const submitOrder = () => {
     .catch((error) => console.log("error", error));
   };
 
-
   return (
     <div>
       <table className='itens'>
@@ -137,7 +136,7 @@ const submitOrder = () => {
           {menuHamburgers.map((produto) => (
             <tr key={produto.id}>
               <div className="menuProducts">
-                <img src={produto.image} alt={`${produto.name}`} />
+                <img src={produto.image} alt={`${produto.name} Image`} />
               </div>
               <td>{produto.name + ' ' + produto.flavor}</td>
               <td>{produto.complement === 'null' ? '' : produto.complement}</td>

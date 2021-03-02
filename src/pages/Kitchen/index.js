@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 
 export const Kitchen = () => {
   const token = localStorage.getItem("token");
-  const [orderPedidos, setPedidos] = useState([]);
+  const [pedidos, setPedidos] = useState([]);
   const [orderId, setOrderId] = useState([]);
-
+  const [status, setOrderStatus] = useState([]);
+  
   useEffect(() => {
     fetch("https://lab-api-bq.herokuapp.com/orders", {
       method: "GET",
@@ -16,7 +17,8 @@ export const Kitchen = () => {
     })
       .then((response) => response.json())
       .then((response) => {
-        setPedidos(response);
+      setPedidos(response.filter(pedido => pedido.status =='pending'))
+       
       })
       .then((data) => {
         console.log(data);
@@ -27,7 +29,7 @@ export const Kitchen = () => {
 
   const handleDelete = (product) => {
     fetch(
-      "https://lab-api-bq.herokuapp.com/orders/"`${orderId}`,
+      `https://lab-api-bq.herokuapp.com/orders/${orderId}`,
       {
         method: "DELETE",
         path: `${orderId}`,
@@ -53,9 +55,30 @@ export const Kitchen = () => {
       .catch((error) => console.log("error", error));
   };
 
+   const handleOrder = (orderId) => {
+     console.log(orderId)
+    fetch(`https://lab-api-bq.herokuapp.com/orders/${orderId}`, {
+      method: 'PUT',
+      headers: { 
+        'accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `${token}`
+      },
+      body: JSON.stringify({
+          'status': 'Pedido pronto'
+      })
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json)
+      const copia = pedidos.filter(pedido => pedido.id != orderId) 
+      setPedidos(copia)
+    })
+  };
+   
+
   return (
     <>
-
       <table className='itens'>
         <tbody>
           <tr>
@@ -63,7 +86,7 @@ export const Kitchen = () => {
             <th>Cliente</th>
             <th>Mesa</th>
           </tr>
-          {orderPedidos.map((produto) => (
+          {pedidos.map((produto) => (
             <tr key={produto.id}>
               <td>{produto.Products.map((item)=>(
                     <>
@@ -73,10 +96,9 @@ export const Kitchen = () => {
                   ))}</td> 
               <td>{produto.client_name}</td>
               <td>{produto.table}</td>
-              {/* <td> <button onClick={() => }>
-                    FINALIZAR
-                  </button>
-              </td> */}
+              <td> 
+              <button id={produto.id} onClick={(e) => handleOrder(e.target.id)}>Pedido Pronto</button> 
+              </td>
             </tr>
           ))}
         </tbody>
@@ -89,4 +111,5 @@ export const Kitchen = () => {
 };
 
 export default Kitchen;
+ 
 
