@@ -1,9 +1,8 @@
-# Burger Queen
+# Lab Burger 
 
 ## Índice
 
-- [1. Preâmbulo](#1-preâmbulo)
-- [2. Resumo do projeto](#2-resumo-do-projeto)
+- [1. Resumo do projeto](#1-resumo-do-projeto)
 - [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
 - [4. Considerações gerais](#4-considerações-gerais)
 - [5. Critérios de aceitação mínimos do
@@ -14,40 +13,14 @@
 
 ---
 
-## 1. Preâmbulo
 
-[React](https://reactjs.org/), [Angular](https://angular.io/) e
-[Vue](https://vuejs.org/) são alguns dos _frameworks_ e _bibliotecas_ de
-JavaScript mais usados na área de desenvolvimento ao redor do mundo e existe uma
-razão para isso. No contexto do navegador, [_manter a interface sincronizada com
-o estado é difícil_](https://medium.com/dailyjs/the-deepest-reason-why-modern-javascript-frameworks-exist-933b86ebc445).
 
-Ao eleger um _framework_ ou _biblioteca_ para nossa interface, nos apoiamos em
-uma série de convenções e implementações _testadas_ e _documentadas_ para
-resolver um problema comum a toda interface web. Isto nos permite concentrar
-melhor (dedicar mais tempo) nas características _específicas_ de nossa
-aplicação.
+## 1. Resumo do projeto
 
-Quando escolhemos uma destas tecnologias não só importamos um pedaço de código
-para reusar (o qual já é um grande valor por si só), mas também adotamos uma
-**arquitetura**, uma série de **princípios de design**, um paradigma, algumas
-**abstrações**, um **vocabulário**, uma **comunidade**, etc...
+É uma pequena hambúrgueria, que está crescendo, necessita uma interface em que se possa realizar pedidos utilizando um tablet, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente.
 
-Como desenvolvedora Front-end, estes kits de desenvolvimento podem resultar em
-uma grande ajuda para implementar rapidamente _features_ dos projetos em que
-você for trabalhar.
 
-## 2. Resumo do projeto
-
-Desta vez temos um projeto 100% por demanda. Você sempre pode (e deve) fazer
-sugestões de melhora e mudança, mas muitas vezes trabalhará em um projeto em que
-primeiro deve se assegurar de cumprir os requisitos.
-
-Um pequeno restaurante de hambúrgueres, que está crescendo, necessita uma
-interface em que se possa realizar pedidos utilizando um _tablet_, e enviá-los
-para a cozinha para que sejam preparados de forma ordenada e eficiente.
-
-![burger-queen](https://user-images.githubusercontent.com/110297/42118136-996b4a52-7bc6-11e8-8a03-ada078754715.jpg)
+![](https://user-images.githubusercontent.com/110297/42118136-996b4a52-7bc6-11e8-8a03-ada078754715.jpg)
 
 Estas são as informações que temos do cliente:
 
@@ -97,7 +70,7 @@ adicionar e a interface deve mostrar o _resumo do pedido_ com o custo total.
 
 ## 3. Objetivos de aprendizagem
 
-O objetivo principal é aprender a construir uma interface web usando React. Esse framework front-end ataca o seguinte problema: **como manter a interface e estado sincronizados**. Portanto, esta experiência espera familiarizá-la com o conceito de estado da tela, e como cada mudança no estado vai refletir na interface (por exemplo, toda vez que adicionamos um _produto_ para um _pedido_, a interface deve atualizar a lista de pedidos e o total).
+Criamos uma interface web usando React. utilizando framework front-end , mantendo o interface em estado sincronizados. onde aprendemos o conceito de estado da tela, e cada mudança no estado será adicinado produtos para o pedido vai eenviado para cozinha, a interface deve atualizar a lista de pedidos e o total).
 
 Finalmente, a interface deve ser pensada específicamente para rodar em **tablets**.
 

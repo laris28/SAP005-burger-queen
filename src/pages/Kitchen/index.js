@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 
 export const Kitchen = () => {
   const token = localStorage.getItem("token");
-  const [orderPedidos, setPedidos] = useState([]);
+  const [pedidos, setPedidos] = useState([]);
   const [orderId, setOrderId] = useState([]);
-
+  
+  
   useEffect(() => {
     fetch("https://lab-api-bq.herokuapp.com/orders", {
       method: "GET",
@@ -16,7 +17,8 @@ export const Kitchen = () => {
     })
       .then((response) => response.json())
       .then((response) => {
-        setPedidos(response);
+      setPedidos(response.filter(pedido => pedido.status =='pending'))
+       
       })
       .then((data) => {
         console.log(data);
@@ -25,39 +27,38 @@ export const Kitchen = () => {
       .catch((error) => console.log("error", error));
   },[]);
 
-  const handleDelete = (product) => {
-    fetch(
-      "https://lab-api-bq.herokuapp.com/orders/"`${orderId}`,
-      {
-        method: "DELETE",
-        path: `${orderId}`,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `${token}`,
-        },
+
+
+   const handleOrder = (orderId) => {
+     console.log(orderId)
+    fetch(`https://lab-api-bq.herokuapp.com/orders/${orderId}`, {
+      method: 'PUT',
+      headers: { 
+        'accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `${token}`
       },
-      []
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const dataId = data;
-        const filterId = dataId.filter((products) =>
-          products.id.includes("id")
-        );
-        setOrderId(filterId);
-        console.log(data);
+      body: JSON.stringify({
+          'status': 'Pedido pronto'
       })
-      .then((data) => {
-        const itens = data;
-      }, [])
-      .catch((error) => console.log("error", error));
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json)
+      const copia = pedidos.filter(pedido => pedido.id != orderId) 
+      setPedidos(copia)
+    })
   };
+   
 
   return (
     <>
       <h1>Pedidos solicitados</h1>
-      {orderPedidos.map((product, index) => {
+    
+      {pedidos.map((product, index) => {
+         console.log(product.id)
         return (
+          
           <div className="container">
             <div className="card">
               <div className="card-container">
@@ -73,6 +74,7 @@ export const Kitchen = () => {
                 </li>
               </div>
             </div>
+            <button id={product.id} onClick={(e) => handleOrder(e.target.id)}>Pedido Pronto</button> 
           </div>
         );
       })}

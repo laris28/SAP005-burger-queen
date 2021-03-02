@@ -1,4 +1,4 @@
-/*import { LugMoveText, Movetouch, Lugedge } from "react-beautiful-dnd";
+/*import { LugMoveText, Movetouch, Lugedge } from "react";
 import React, { useState } from 'react';
 
 const menuHamburger = [
@@ -11,11 +11,10 @@ const menuHamburger = [
         id: 'Cintia ',
         name: 'Cintia Fumi',
         Image: 'img',
-        description: 'Burguer Cintia Fumi, carne'
-    },
-    {
+        description: 'Burguer Cintia Fumi, carne',
+    }
+
 ]
-  
    export const Cardapio = () => {
     const [menuHamburgers, setHamburgers] = useState (menuHamburger);
 
@@ -61,5 +60,4 @@ const menuHamburger = [
         </div>
     );
 }
-
 export default Cardapio; */
