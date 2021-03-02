@@ -49,8 +49,6 @@ export const Kitchen = () => {
       })
       .then((data) => {
         const itens = data;
-        //const item = itens.filter(product => product.id.includes('itensOrdem'));
-        //setOrderId(item)
       }, [])
       .catch((error) => console.log("error", error));
   };
