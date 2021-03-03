@@ -134,12 +134,14 @@ const submitOrder = () => {
        'Authorization': `${token}`
      },
      body: JSON.stringify({
-         'status': 'Pedido pronto'
+         'status': 'Pedido entregue'
      })
    })
    .then((response) => response.json())
    .then((json) => {
      console.log(json)
+     const copia = pedidos.filter(pedido => pedido.id != orderId) 
+     setPedidos(copia)
    })
  };
 
@@ -255,18 +257,20 @@ const submitOrder = () => {
       <table className='itens'>
         <tbody>
           <tr>
-            <th>Produtos adicionados</th>
+            <th>Pedidos prontos</th>
           </tr>
           {pedidos.map((produto) => (
             <tr key={produto.id}>
-              <div className="menuProducts">
-                <img src={produto.image} alt={`${produto.name}`} />
-              </div>
-              <td>{produto.name}</td>
-              <td>{produto.complement === "null" ? "" : produto.complement}</td>
-              <td>R$ {produto.price},00</td>
-              <td>
-                <button onClick={() => handleDelete(produto)}>Deletar</button>
+              <td>{produto.Products.map((item)=>(
+                    <>
+                      <td> {item.qtd}</td>
+                      <td> {item.name},</td>
+                    </>
+                  ))}</td> 
+              <td>{produto.client_name}</td>
+              <td>{produto.table}</td>
+              <td> 
+              <button id={produto.id} onClick={(e) => handleOrder(e.target.id)}>Pedido entregue</button> 
               </td>
             </tr>
           ))}
