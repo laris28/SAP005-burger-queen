@@ -47,6 +47,7 @@ export const Kitchen = () => {
       setPedidos(copia)
     })
   };
+  
    
 
   return (
