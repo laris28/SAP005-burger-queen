@@ -134,7 +134,7 @@ const submitOrder = () => {
        'Authorization': `${token}`
      },
      body: JSON.stringify({
-         'status': 'Pedido pronto'
+         'status': 'Pedido entregue'
      })
    })
    .then((response) => response.json())
