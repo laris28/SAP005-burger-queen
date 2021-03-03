@@ -277,9 +277,6 @@ return (
           <table className='itens'>
             <tbody>
               <tr>
-                <th>Pedidos prontos</th>
-              </tr>
-              <tr>
                 <th>Produtos</th>
               </tr>
               {pedidos.map((produto) => {
@@ -330,7 +327,7 @@ return (
                 </tbody>
               </table>
             </div>
-            
+
         <label>Name:</label><br/>
         <input
           name="name"
@@ -352,26 +349,6 @@ return (
         <Link className="link-home" to="/">
           Sair
         </Link>
-{/* 
-        <table className='itens'>
-        <tbody>
-          <tr>
-            <th>Pedidos prontos</th>
-          </tr>
-          {orderPedidos.map((produto) => (
-            <tr key={produto.id}>
-              <div className="menuProducts">
-                <img src={produto.image} alt={`${produto.name}`} />
-              </div>
-              <td>{produto.name}</td>
-              <td>Status: {produto.status}</td>
-              <td>
-                <button onClick={() => handleOrder(produto)}>Entregue</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
 
     </div>
   );
