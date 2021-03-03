@@ -89,3 +89,6 @@ div{
   height: 60%;
 }
 
+.img {
+background-image: url("img/.logo.png");
+}

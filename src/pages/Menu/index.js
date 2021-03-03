@@ -46,9 +46,11 @@ useEffect(() => {
 }, []);
 
 const handleAddItems = (product) => {
-  setItems([...listItems, product]);
-  setProductPrice([...productPrice, product.price]);
-  const addProduct = listItems.map((product) => {
+  const newItems = [...listItems, product]
+  setItems(newItems);
+  const newProductPrice = [...productPrice, product.price] 
+  setProductPrice(newProductPrice);
+  const addProduct = newItems.map((product) => {
     return {
       id: product.id,
       qtd: 1,
@@ -73,7 +75,7 @@ const handleAddItems = (product) => {
 };
 
 const handleTotalItems = () => {
-  setTotal(productPrice.reduce((total, num) => total + num));
+  setTotal(productPrice.reduce((total, num) => total + num,0));
 }
 
 const handleDelete = (product) => {
@@ -161,7 +163,7 @@ const submitOrder = () => {
               <td>{produto.name}</td>
               <td>R$ {produto.price},00</td>
               <td>
-                <button onClick={() => handleAddItems(produto)}>+</button>
+               <button onClick={() => handleAddItems(produto)}><img src="./img/logo.png"/></button>
               </td>
             </tr>
           ))}
@@ -178,13 +180,14 @@ const submitOrder = () => {
           {menuHamburgers.map((produto) => (
             <tr key={produto.id}>
               <div className="menuProducts">
-                <img src={produto.image} alt={`${produto.name} Image`} />
+                <img src={produto.image} alt={`${produto.name} `} />
               </div>
               <td>{produto.name + ' ' + produto.flavor}</td>
               <td>{produto.complement === 'null' ? '' : produto.complement}</td>
               <td>R$ {produto.price},00</td>
               <td>
-                <button onClick={() => handleAddItems(produto)}>+</button>
+                <button onClick={() => handleAddItems(produto)}><img src={"./img/Tag L.png"}/></button>
+                
               </td>
             </tr>
           ))}
