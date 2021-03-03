@@ -27,34 +27,6 @@ export const Kitchen = () => {
       .catch((error) => console.log("error", error));
   },[]);
 
-  const handleDelete = (product) => {
-    fetch(
-      `https://lab-api-bq.herokuapp.com/orders/${orderId}`,
-      {
-        method: "DELETE",
-        path: `${orderId}`,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `${token}`,
-        },
-      },
-      []
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const dataId = data;
-        const filterId = dataId.filter((products) =>
-          products.id.includes("id")
-        );
-        setOrderId(filterId);
-        console.log(data);
-      })
-      .then((data) => {
-        const itens = data;
-      }, [])
-      .catch((error) => console.log("error", error));
-  };
-
    const handleOrder = (orderId) => {
      console.log(orderId)
     fetch(`https://lab-api-bq.herokuapp.com/orders/${orderId}`, {
@@ -75,6 +47,7 @@ export const Kitchen = () => {
       setPedidos(copia)
     })
   };
+  
    
 
   return (

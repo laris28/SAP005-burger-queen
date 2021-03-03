@@ -5,7 +5,8 @@ export const Menu = () => {
   const token = localStorage.getItem("token");
   const [listItems, setItems] = useState([]);
   const [menuHamburgers, setHamburgers] = useState([]);
-  const [orderPedidos, setPedidos] = useState([]);
+  const [orderPedidos, setOrderPedidos] = useState([]);
+  const [pedidos, setPedidos] = useState([]);
   const [menuCafe, setCafe] = useState([]);
   const [side, setSide] = useState([]);
   const [menuBebidas, setBebidas] = useState([]);
@@ -67,7 +68,7 @@ const handleAddItems = (product) => {
     });
   }
 
-  setPedidos({ ...orderPedidos, products: list });
+  setOrderPedidos({ ...orderPedidos, products: list });
   console.log(orderPedidos);
 };
 
@@ -93,7 +94,7 @@ const submitOrder = () => {
     .then((response) => {
       response.json()
       .then((data) => console.log(data));
-      setPedidos({});
+      setOrderPedidos({});
       setItems([]);
       setTotal([]);
       setProductPrice([]);
@@ -102,6 +103,45 @@ const submitOrder = () => {
     })
     .catch((error) => console.log("error", error));
   };
+
+  useEffect(() => {
+    fetch("https://lab-api-bq.herokuapp.com/orders", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+      setPedidos(response.filter(pedido => pedido.status =='Pedido pronto'))
+       
+      })
+      .then((data) => {
+        console.log(data);
+      })
+
+      .catch((error) => console.log("error", error));
+  },[]);
+
+  const handleOrder = (orderId) => {
+    console.log(orderId)
+   fetch(`https://lab-api-bq.herokuapp.com/orders/${orderId}`, {
+     method: 'PUT',
+     headers: { 
+       'accept': 'application/json',
+       'Content-Type': 'application/json',
+       'Authorization': `${token}`
+     },
+     body: JSON.stringify({
+         'status': 'Pedido pronto'
+     })
+   })
+   .then((response) => response.json())
+   .then((json) => {
+     console.log(json)
+   })
+ };
 
   return (
     <div>
@@ -212,17 +252,38 @@ const submitOrder = () => {
         </tbody>
       </table>
 
+      <table className='itens'>
+        <tbody>
+          <tr>
+            <th>Produtos adicionados</th>
+          </tr>
+          {pedidos.map((produto) => (
+            <tr key={produto.id}>
+              <div className="menuProducts">
+                <img src={produto.image} alt={`${produto.name}`} />
+              </div>
+              <td>{produto.name}</td>
+              <td>{produto.complement === "null" ? "" : produto.complement}</td>
+              <td>R$ {produto.price},00</td>
+              <td>
+                <button onClick={() => handleDelete(produto)}>Deletar</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
         <label>Name:</label><br/>
         <input
           name="name"
           type="text"
-          onChange={(e) => setPedidos({ ...orderPedidos, client: e.target.value })}
+          onChange={(e) => setOrderPedidos({ ...orderPedidos, client: e.target.value })}
         /><br/>
         <label>Numero da mesa:</label><br/>
         <input
           name="table"
           type="text"
-          onChange={(e) => setPedidos({ ...orderPedidos, table: e.target.value })}
+          onChange={(e) => setOrderPedidos({ ...orderPedidos, table: e.target.value })}
         /><br/>
         <div>
           <h3>Total</h3>
@@ -233,6 +294,27 @@ const submitOrder = () => {
         <Link className="link-home" to="/">
           Sair
         </Link>
+{/* 
+        <table className='itens'>
+        <tbody>
+          <tr>
+            <th>Pedidos prontos</th>
+          </tr>
+          {orderPedidos.map((produto) => (
+            <tr key={produto.id}>
+              <div className="menuProducts">
+                <img src={produto.image} alt={`${produto.name}`} />
+              </div>
+              <td>{produto.name}</td>
+              <td>Status: {produto.status}</td>
+              <td>
+                <button onClick={() => handleOrder(produto)}>Entregue</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table> */}
+
     </div>
   );
 }
