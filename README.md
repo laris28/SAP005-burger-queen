@@ -24,32 +24,6 @@ Estas são as informações que temos do cliente:
 > A nossa proposta de serviço 24 horas foi muito bem recebida e, para continuar a
 > crescer, utilizamos o sistema que nos ajuda a receber pedidos de nossos
 > clientes.
->
-> Nós temos 2 menus. Um muito simples para o café da manhã:
->
-> | Ítem                  | Preço R\$ |
-> | --------------------- | --------- |
-> | Café americano        | 5         |
-> | Café com leite        | 7         |
-> | Misto Quente          | 10        |
-> | Suco de fruta natural | 7         |
->
-> E outro menu para o resto do dia:
->
-> | Ítem                | Preço   |
-> | ------------------- | ------- |
-> | **Hambúrgueres**    | **R\$** |
-> | Hambúrguer simples  | 10      |
-> | Hambúrguer duplo    | 15      |
-> | **Acompanhamentos** | **R\$** |
-> | Batata frita        | 5       |
-> | Anéis de cebola     | 5       |
-> | **Bebidas**         | **R\$** |
-> | Água 500ml          | 5       |
-> | Água 750ml          | 7       |
-> | Refrigerante 500ml  | 7       |
-> | Refrigerante 750ml  | 10      |
->
 Nossa interface mostra os dois menus (café da manhã e restante do dia), cada
 um com todos os seus produtos. O usuário deve poder escolher que produtos
 adicionar e a interface deve mostrar o resumo do pedido com o valor total.
