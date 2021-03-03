@@ -5,7 +5,7 @@ export const Kitchen = () => {
   const token = localStorage.getItem("token");
   const [pedidos, setPedidos] = useState([]);
   const [orderId, setOrderId] = useState([]);
-  
+
   
   useEffect(() => {
     fetch("https://lab-api-bq.herokuapp.com/orders", {
@@ -26,8 +26,6 @@ export const Kitchen = () => {
 
       .catch((error) => console.log("error", error));
   },[]);
-
-
 
    const handleOrder = (orderId) => {
      console.log(orderId)
@@ -53,31 +51,32 @@ export const Kitchen = () => {
 
   return (
     <>
-      <h1>Pedidos solicitados</h1>
     
-      {pedidos.map((product, index) => {
-         console.log(product.id)
-        return (
-          
-          <div className="container">
-            <div className="card">
-              <div className="card-container">
-                <li key={index}>
-                  <p>{product.client_name}</p>
-                   <p>{product.Products.map((item,index2)=>(
-                     <>
-                     <p> {item.name}</p>
-                     <p> {item.qtd}</p>
-                     </>
-                   ))}</p> 
-                  <p>{product.table}</p>
-                </li>
-              </div>
-            </div>
-            <button id={product.id} onClick={(e) => handleOrder(e.target.id)}>Pedido Pronto</button> 
-          </div>
-        );
-      })}
+      <table className='itens'>
+        <tbody>
+          <tr>
+            <th>Pedidos</th>
+            <th>Cliente</th>
+            <th>Mesa</th>
+          </tr>
+          {pedidos.map((produto) => (
+            <tr key={produto.id}>
+              <td>{produto.Products.map((item)=>(
+                    <>
+                      <td> {item.qtd}</td>
+                      <td> {item.name},</td>
+                    </>
+                  ))}</td> 
+              <td>{produto.client_name}</td>
+              <td>{produto.table}</td>
+              <td> 
+              <button id={produto.id} onClick={(e) => handleOrder(e.target.id)}>Pedido Pronto</button> 
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
       <Link className="link-home" to="/">
         Sair
       </Link>
@@ -86,3 +85,5 @@ export const Kitchen = () => {
 };
 
 export default Kitchen;
+ 
+

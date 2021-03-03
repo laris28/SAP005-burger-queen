@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Menu = () => {
   const token = localStorage.getItem("token");
@@ -229,6 +230,9 @@ const submitOrder = () => {
           <button onClick={() => handleTotalItems()}>Totalizar itens</button>
           <button onClick={() => submitOrder()}>Finalizar pedido</button>
         </div>
+        <Link className="link-home" to="/">
+          Sair
+        </Link>
     </div>
   );
 }
