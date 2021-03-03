@@ -48,7 +48,7 @@ export const Login = () => {
       <>
         <div className="Login">
             <form className="login">	
-                <h1>BURGER QUEEN</h1>
+                <h1>LAB BURGER</h1>
                 <input className="input" type="email" placeholder="Informe seu email" value={email} onChange={e=> setEmail(e.target.value)}/>
                 <br></br>
                 <input className="input" type="password" placeholder="Informe sua senha" value={password} onChange={e=> setPassword(e.target.value)}/>
@@ -61,7 +61,13 @@ export const Login = () => {
                 <p className="p-bottom">Ainda não possui conta? <Link to="/register">Cadastre-se</Link></p>
             </form>
         </div>
-      </>
+      <footer>
+            <p className="footer-text">Projeto /Lab SAP005
+            <a className="footer-link" href="https://github.com/laris28" alt="Larissa Alborghette GitHub"> Larissa Alborghette</a> e	
+            <a className="footer-link" href="https://github.com/RobertaKelly" alt="Roberta Kelly GitHub"> Roberta Kelly</a> 	
+            </p>	
+        </footer>
+        </>   
     );
 };
 

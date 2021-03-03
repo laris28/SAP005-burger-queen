@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Menu = () => {
   const token = localStorage.getItem("token");
   const [listItems, setItems] = useState([]);
   const [menuHamburgers, setHamburgers] = useState([]);
-  const [orderPedidos, setPedidos] = useState([]);
+  const [orderPedidos, setOrderPedidos] = useState([]);
+  const [pedidos, setPedidos] = useState([]);
   const [menuCafe, setCafe] = useState([]);
   const [side, setSide] = useState([]);
   const [menuBebidas, setBebidas] = useState([]);
@@ -66,7 +68,7 @@ const handleAddItems = (product) => {
     });
   }
 
-  setPedidos({ ...orderPedidos, products: list });
+  setOrderPedidos({ ...orderPedidos, products: list });
   console.log(orderPedidos);
 };
 
@@ -92,7 +94,7 @@ const submitOrder = () => {
     .then((response) => {
       response.json()
       .then((data) => console.log(data));
-      setPedidos({});
+      setOrderPedidos({});
       setItems([]);
       setTotal([]);
       setProductPrice([]);
@@ -102,6 +104,46 @@ const submitOrder = () => {
     .catch((error) => console.log("error", error));
   };
 
+  useEffect(() => {
+    fetch("https://lab-api-bq.herokuapp.com/orders", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+      setPedidos(response.filter(pedido => pedido.status =='Pedido pronto'))
+       
+      })
+      .then((data) => {
+        console.log(data);
+      })
+
+      .catch((error) => console.log("error", error));
+  },[]);
+
+  const handleOrder = (orderId) => {
+    console.log(orderId)
+   fetch(`https://lab-api-bq.herokuapp.com/orders/${orderId}`, {
+     method: 'PUT',
+     headers: { 
+       'accept': 'application/json',
+       'Content-Type': 'application/json',
+       'Authorization': `${token}`
+     },
+     body: JSON.stringify({
+         'status': 'Pedido entregue'
+     })
+   })
+   .then((response) => response.json())
+   .then((json) => {
+     console.log(json)
+     const copia = pedidos.filter(pedido => pedido.id != orderId) 
+     setPedidos(copia)
+   })
+ };
 
   return (
     <div>
@@ -136,7 +178,7 @@ const submitOrder = () => {
           {menuHamburgers.map((produto) => (
             <tr key={produto.id}>
               <div className="menuProducts">
-                <img src={produto.image} alt={`${produto.name}`} />
+                <img src={produto.image} alt={`${produto.name} Image`} />
               </div>
               <td>{produto.name + ' ' + produto.flavor}</td>
               <td>{produto.complement === 'null' ? '' : produto.complement}</td>
@@ -212,17 +254,40 @@ const submitOrder = () => {
         </tbody>
       </table>
 
+      <table className='itens'>
+        <tbody>
+          <tr>
+            <th>Pedidos prontos</th>
+          </tr>
+          {pedidos.map((produto) => (
+            <tr key={produto.id}>
+              <td>{produto.Products.map((item)=>(
+                    <>
+                      <td> {item.qtd}</td>
+                      <td> {item.name},</td>
+                    </>
+                  ))}</td> 
+              <td>{produto.client_name}</td>
+              <td>{produto.table}</td>
+              <td> 
+              <button id={produto.id} onClick={(e) => handleOrder(e.target.id)}>Pedido entregue</button> 
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
         <label>Name:</label><br/>
         <input
           name="name"
           type="text"
-          onChange={(e) => setPedidos({ ...orderPedidos, client: e.target.value })}
+          onChange={(e) => setOrderPedidos({ ...orderPedidos, client: e.target.value })}
         /><br/>
         <label>Numero da mesa:</label><br/>
         <input
           name="table"
           type="text"
-          onChange={(e) => setPedidos({ ...orderPedidos, table: e.target.value })}
+          onChange={(e) => setOrderPedidos({ ...orderPedidos, table: e.target.value })}
         /><br/>
         <div>
           <h3>Total</h3>
@@ -230,6 +295,30 @@ const submitOrder = () => {
           <button onClick={() => handleTotalItems()}>Totalizar itens</button>
           <button onClick={() => submitOrder()}>Finalizar pedido</button>
         </div>
+        <Link className="link-home" to="/">
+          Sair
+        </Link>
+{/* 
+        <table className='itens'>
+        <tbody>
+          <tr>
+            <th>Pedidos prontos</th>
+          </tr>
+          {orderPedidos.map((produto) => (
+            <tr key={produto.id}>
+              <div className="menuProducts">
+                <img src={produto.image} alt={`${produto.name}`} />
+              </div>
+              <td>{produto.name}</td>
+              <td>Status: {produto.status}</td>
+              <td>
+                <button onClick={() => handleOrder(produto)}>Entregue</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table> */}
+
     </div>
   );
 }
