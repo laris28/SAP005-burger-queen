@@ -14,6 +14,8 @@ export const Menu = () => {
   const [DeletProduct, setDeletProduct] = useState([]);
   const [total, setTotal] = useState([]);
 
+  const [menu, setMenu] = useState([]);
+
 useEffect(() => {
   fetch("https://lab-api-bq.herokuapp.com/products", {
     method: "GET",
@@ -46,9 +48,11 @@ useEffect(() => {
 }, []);
 
 const handleAddItems = (product) => {
-  setItems([...listItems, product]);
-  setProductPrice([...productPrice, product.price]);
-  const addProduct = listItems.map((product) => {
+  const newItems = [...listItems, product]
+  setItems(newItems);
+  const newProductPrice = [...productPrice, product.price]
+  setProductPrice(newProductPrice);
+  const addProduct = newItems.map((product) => {
     return {
       id: product.id,
       qtd: 1,
@@ -73,7 +77,7 @@ const handleAddItems = (product) => {
 };
 
 const handleTotalItems = () => {
-  setTotal(productPrice.reduce((total, num) => total + num));
+  setTotal(productPrice.reduce((total, num) => total + num, 0));
 }
 
 const handleDelete = (product) => {
@@ -134,7 +138,7 @@ const submitOrder = () => {
        'Authorization': `${token}`
      },
      body: JSON.stringify({
-         'status': 'Pedido entregue'
+         'status': 'Pedido pronto'
      })
    })
    .then((response) => response.json())
@@ -145,137 +149,184 @@ const submitOrder = () => {
    })
  };
 
-  return (
-    <div>
-      <table className='itens'>
-        <tbody>
-          <tr>
-            <th>Café da Manhã</th>
-            <th>Preço</th>
-          </tr>
-          {menuCafe.map((produto) => (
-            <tr key={produto.id}>
-              <div className="menuProducts">
-                <img src={produto.image} alt={`${produto.name}`} />
-              </div>
-              <td>{produto.name}</td>
-              <td>R$ {produto.price},00</td>
-              <td>
-                <button onClick={() => handleAddItems(produto)}>+</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+  
 
-      <table className='itens'>
-        <tbody>
-          <tr>
-            <th>Hambúrgueres</th>
-            <th>Adicionais</th>
-            <th>Preço</th>
-          </tr>
-          {menuHamburgers.map((produto) => (
-            <tr key={produto.id}>
-              <div className="menuProducts">
-                <img src={produto.image} alt={`${produto.name} Image`} />
-              </div>
-              <td>{produto.name + ' ' + produto.flavor}</td>
-              <td>{produto.complement === 'null' ? '' : produto.complement}</td>
-              <td>R$ {produto.price},00</td>
-              <td>
-                <button onClick={() => handleAddItems(produto)}>+</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+return (
+  <div>
+    <div className="App">
+      <button onClick={() => setMenu('breakfast')}>
+        Café da manhã
+      </button>
+      <button onClick={() => setMenu('hamburger')}>
+        Hamburguer
+      </button>
+      <button onClick={() => setMenu('side')}>
+        Acompanhamento
+      </button>
+      <button onClick={() => setMenu('drinks')}>
+        Bebidas
+      </button>
+      <button onClick={() => setMenu('prontos')}>
+        Pedidos prontos
+      </button>
 
-      <table className='itens'>
-        <tbody>
-          <tr>
-            <th>Acompanhamentos</th>
-            <th>Preço</th>
-          </tr>
-          {side.map((produto) => (
-            <tr key={produto.id}>
-              <div className="menuProducts">
-                <img src={produto.image} alt={`${produto.name}`} />
-              </div>
-              <td>{produto.name}</td>
-              <td>R$ {produto.price},00</td>
-              <td>
-                <button onClick={() => handleAddItems(produto)}>+</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {menu === 'breakfast' && (
+        <div>
+           <table className='itens'>
+            <tbody>
+              <tr>
+                <th>Café da Manhã</th>
+                <th>Preço</th>
+              </tr>
+              {menuCafe.map((produto) => (
+                <tr key={produto.id}>
+                  <div className="menuProducts">
+                    <img src={produto.image} alt={`${produto.name}`} />
+                  </div>
+                  <td>{produto.name}</td>
+                  <td>R$ {produto.price},00</td>
+                  <td>
+                    <button onClick={() => handleAddItems(produto)}>+</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
 
-      <table className='itens'>
-        <tbody>
-          <tr>
-            <th>Bebidas</th>
-            <th>Preço</th>
-          </tr>
-          {menuBebidas.map((produto) => (
-            <tr key={produto.id}>
-              <div className="menuProducts">
-                <img src={produto.image} alt={`${produto.name}`} />
-              </div>
-              <td>{produto.name}</td>
-              <td>R$ {produto.price},00</td>
-              <td>
-                <button onClick={() => handleAddItems(produto)}>+</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {menu === 'hamburger' && (
+        <div>
+           <table className='itens'>
+            <tbody>
+              <tr>
+                <th>Hambúrgueres</th>
+                <th>Adicionais</th>
+                <th>Preço</th>
+              </tr>
+              {menuHamburgers.map((produto) => (
+                <tr key={produto.id}>
+                  <div className="menuProducts">
+                    <img src={produto.image} alt={`${produto.name} Image`} />
+                  </div>
+                  <td>{produto.name + ' ' + produto.flavor}</td>
+                  <td>{produto.complement === 'null' ? '' : produto.complement}</td>
+                  <td>R$ {produto.price},00</td>
+                  <td>
+                    <button onClick={() => handleAddItems(produto)}>+</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
 
-      <table className='itens'>
-        <tbody>
-          <tr>
-            <th>Produtos adicionados</th>
-          </tr>
-          {listItems.map((produto) => (
-            <tr key={produto.id}>
-              <div className="menuProducts">
-                <img src={produto.image} alt={`${produto.name}`} />
-              </div>
-              <td>{produto.name}</td>
-              <td>{produto.complement === "null" ? "" : produto.complement}</td>
-              <td>R$ {produto.price},00</td>
-              <td>
-                <button onClick={() => handleDelete(produto)}>Deletar</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {menu === 'side' && (
+        <div>
+           <table className='itens'>
+              <tbody>
+                <tr>
+                  <th>Acompanhamentos</th>
+                  <th>Preço</th>
+                </tr>
+                {side.map((produto) => (
+                  <tr key={produto.id}>
+                    <div className="menuProducts">
+                      <img src={produto.image} alt={`${produto.name}`} />
+                    </div>
+                    <td>{produto.name}</td>
+                    <td>R$ {produto.price},00</td>
+                    <td>
+                      <button onClick={() => handleAddItems(produto)}>+</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+        </div>
+      )}
 
-      <table className='itens'>
-        <tbody>
-          <tr>
-            <th>Pedidos prontos</th>
-          </tr>
-          {pedidos.map((produto) => (
-            <tr key={produto.id}>
-              <td>{produto.Products.map((item)=>(
-                    <>
-                      <td> {item.qtd}</td>
-                      <td> {item.name},</td>
-                    </>
-                  ))}</td> 
-              <td>{produto.client_name}</td>
-              <td>{produto.table}</td>
-              <td> 
-              <button id={produto.id} onClick={(e) => handleOrder(e.target.id)}>Pedido entregue</button> 
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {menu === 'drinks' && (
+        <div>
+           <table className='itens'>
+            <tbody>
+              <tr>
+                <th>Bebidas</th>
+                <th>Preço</th>
+              </tr>
+              {menuBebidas.map((produto) => (
+                <tr key={produto.id}>
+                  <div className="menuProducts">
+                    <img src={produto.image} alt={`${produto.name}`} />
+                  </div>
+                  <td>{produto.name}</td>
+                  <td>R$ {produto.price},00</td>
+                  <td>
+                    <button onClick={() => handleAddItems(produto)}>+</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {menu === 'prontos' && (
+        <div>
+          <table className='itens'>
+            <tbody>
+              <tr>
+                <th>Produtos</th>
+              </tr>
+              {pedidos.map((produto) => {
+                const dataUpdated = new Date(produto.updatedAt);
+                const dataCreated = new Date(produto.createdAt);
+                const diferença = Math.abs(dataUpdated) - dataCreated;
+                const minutes = Math.floor(diferença / 1000 / 60);
+                return(
+                  <tr key={produto.id}>
+                    <td>{produto.Products.map((item)=>(
+                          <>
+                            <td> {item.qtd}</td>
+                            <td> {item.name},</td>
+                          </>
+                        ))}</td> 
+                    <td> {minutes} min </td>
+                    <td>{produto.client_name}</td>
+                    <td>{produto.table}</td>
+                    <td> 
+                    <button id={produto.id} onClick={(e) => handleOrder(e.target.id)}>Pedido entregue</button> 
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+    <table className='itens'>
+                <tbody>
+                  <tr>
+                    <th>Produtos adicionados</th>
+                  </tr>
+                  {listItems.map((produto) => (
+                    <tr key={produto.id}>
+                      <div className="menuProducts">
+                        <img src={produto.image} alt={`${produto.name}`} />
+                      </div>
+                      <td>{produto.name}</td>
+                      <td>{produto.complement === "null" ? "" : produto.complement}</td>
+                      <td>R$ {produto.price},00</td>
+                      <td>
+                        <button onClick={() => handleDelete(produto)}>Deletar</button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
         <label>Name:</label><br/>
         <input
@@ -298,26 +349,6 @@ const submitOrder = () => {
         <Link className="link-home" to="/">
           Sair
         </Link>
-{/* 
-        <table className='itens'>
-        <tbody>
-          <tr>
-            <th>Pedidos prontos</th>
-          </tr>
-          {orderPedidos.map((produto) => (
-            <tr key={produto.id}>
-              <div className="menuProducts">
-                <img src={produto.image} alt={`${produto.name}`} />
-              </div>
-              <td>{produto.name}</td>
-              <td>Status: {produto.status}</td>
-              <td>
-                <button onClick={() => handleOrder(produto)}>Entregue</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table> */}
 
     </div>
   );
