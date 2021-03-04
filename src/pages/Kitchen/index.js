@@ -52,6 +52,10 @@ export const Kitchen = () => {
 
   return (
     <>
+      <header>
+        <p></p>
+      </header>
+      <div className="menu">
       <table className='itens'>
         <tbody>
           <tr>
@@ -79,6 +83,7 @@ export const Kitchen = () => {
       <Link className="link-home" to="/">
         Sair
       </Link>
+      </div>
     </>
   );
 };

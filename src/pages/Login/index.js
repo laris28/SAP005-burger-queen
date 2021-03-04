@@ -61,6 +61,7 @@ export const Login = () => {
                 <p className="p-bottom">Ainda não possui conta? <Link to="/register">Cadastre-se</Link></p>
             </form>
         </div>
+        
         <footer id="footer">
           <p>Projeto feito na <a target="_blank" href="https://www.laboratoria.la/br">Laboratoria</a> por
             <a className="footer-link" href="https://github.com/laris28" alt="Larissa Alborghette GitHub"> Larissa Alborghette</a> e	

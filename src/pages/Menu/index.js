@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+
 export const Menu = () => {
   const token = localStorage.getItem("token");
   const [listItems, setItems] = useState([]);
@@ -152,21 +153,27 @@ const submitOrder = () => {
   
 
 return (
-  <div>
+  <>
+  <div className="menu">
     <div className="App">
-      <button onClick={() => setMenu('breakfast')}>
+    <section>
+      <div>
+        <img src={"../img/logo.png"}/>
+      </div>
+    </section>
+      <button className="buttonMenu" onClick={() => setMenu('breakfast')}>
         Café da manhã
       </button>
-      <button onClick={() => setMenu('hamburger')}>
+      <button className="buttonMenu" onClick={() => setMenu('hamburger')}>
         Hamburguer
       </button>
-      <button onClick={() => setMenu('side')}>
+      <button className="buttonMenu" onClick={() => setMenu('side')}>
         Acompanhamento
       </button>
-      <button onClick={() => setMenu('drinks')}>
+      <button className="buttonMenu" onClick={() => setMenu('drinks')}>
         Bebidas
       </button>
-      <button onClick={() => setMenu('prontos')}>
+      <button className="buttonMenu" onClick={() => setMenu('prontos')}>
         Pedidos prontos
       </button>
 
@@ -296,7 +303,7 @@ return (
                     <td>{produto.client_name}</td>
                     <td>{produto.table}</td>
                     <td> 
-                    <button id={produto.id} onClick={(e) => handleOrder(e.target.id)}>Pedido entregue</button> 
+                    <button className="pedido" id={produto.id} onClick={(e) => handleOrder(e.target.id)}>Pedido entregue</button> 
                     </td>
                   </tr>
                 )
@@ -329,7 +336,7 @@ return (
             </div>
 
         <label>Name:</label><br/>
-        <input
+        <input 
           name="name"
           type="text"
           onChange={(e) => setOrderPedidos({ ...orderPedidos, client: e.target.value })}
@@ -343,14 +350,14 @@ return (
         <div>
           <h3>Total</h3>
           <h3>R${total}</h3>
-          <button onClick={() => handleTotalItems()}>Totalizar itens</button>
-          <button onClick={() => submitOrder()}>Finalizar pedido</button>
+          <button className="form-button" onClick={() => handleTotalItems()}>Totalizar itens</button>
+          <button className="form-button" onClick={() => submitOrder()}>Finalizar pedido</button>
         </div>
         <Link className="link-home" to="/">
           Sair
         </Link>
-
     </div>
+    </>
   );
 }
 export default Menu;

@@ -31,14 +31,18 @@ code {
   padding-right: 30px;
 }
 
-.login, .register, .cardapio{
+.login, .register, .menu{
   border: 10px solid #000000;
   padding: 20px;
-  background: #ffffff;
+  background: #ffde81;
   border-radius: 30px;
 }
 
-input, .form-button, .button{
+.menu{
+  margin: 30px;
+}
+
+input, .form-button, .button, .buttonMenu, .pedido{
   height: 5vh;
   width: 17vw;
   font-size: 1em;
@@ -53,7 +57,7 @@ input, .form-button, .button{
   width: 10vw;
 }
 
-.form-button, .button, .cafe{
+.form-button, .button, .cafe, .buttonMenu, .pedido{
   background-color: #000000;
   font-size: 16px;
   color: #ffffff;
@@ -69,11 +73,19 @@ input, .form-button, .button{
   width: 19vw
 }
 
-h1, input{
-  color: #000000;
+.pedido{
+  height: 6vh;
+  width: 13vw
 }
 
+.buttonMenu{
+  height: 7vh;
+  width: 15vw
+}
 
+h1, h3, input, th, label, td, .p-bottom{
+  color: #000000;
+}
 
 .menuProducts {
   width: 100px;
@@ -99,6 +111,9 @@ h1, input{
   transition: 0.3s ease-in-out;
   text-align: center;
 }
+
+
+
 
 
 
