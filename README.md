@@ -57,6 +57,6 @@ Nossos usuários Garçom e Cozinheiro deve acessar os seguintes recuros :
 
 * HTML / CSS / JavaScript / Consumos de API/ ReactJs / React Hooks / React Router / GIT GitHub / Panejamento Trello (Metodologia ágil)
 
-## 5. Desenvolveroras
+## 5. Desenvolvedoras
  * Larissa Alberghette e Roberta Kelly  
 
