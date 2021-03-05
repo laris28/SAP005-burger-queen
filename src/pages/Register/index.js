@@ -36,7 +36,7 @@ export const Register = () => {
         <>
         <div className="Register">
             <form className="register" onSubmit={sendRegistration}>
-                <div className="logo-login">
+                <div className="logo-register">
                     <Logo />
                 </div>                
                 <input type='text' className="input-register" placeholder='Nome do usuario' onChange={(e) => registrationData({...signIn, 'name' : e.target.value})} />
@@ -52,8 +52,10 @@ export const Register = () => {
                     <input type="radio" className='select' value='waiter' name='role' onChange={(e) => registrationData({...signIn, 'role' : e.target.value})} />
                 </div>
                 <br></br>
-                <button id='btn-submit' className="input-register" type='submit' value='submit'>Cadastrar</button>
-                <p>Se já for cadastrado, vá para o <Link to='/'>login</Link> </p>
+                <button id='btn-submit' className="form-input-register" type='submit' value='submit'>Cadastrar</button>
+                <div className="texto-cadastro">
+                    <p>Se já for cadastrado, vá para o <Link to='/'>login</Link> </p>
+                </div>
             </form>
         </div>
          
