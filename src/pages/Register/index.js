@@ -1,7 +1,6 @@
 import { Link, useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
-// import axios from 'axios';
-
+import Logo from "../Components/logo";
 
 export const Register = () => {
     const [signIn, registrationData] = useState({'restaurant': 'burguer queen'});
@@ -37,24 +36,33 @@ export const Register = () => {
         <>
         <div className="Register">
             <form className="register" onSubmit={sendRegistration}>
-                <h1>LAB BURGER</h1>
-                <input type='text' className='userInput' placeholder='Nome do usuario' onChange={(e) => registrationData({...signIn, 'name' : e.target.value})} />
+                <div className="logo-login">
+                    <Logo />
+                </div>                
+                <input type='text' className="input-register" placeholder='Nome do usuario' onChange={(e) => registrationData({...signIn, 'name' : e.target.value})} />
                 <br></br>
-                <input type='text' className='emailInput' placeholder='Insira seu e-mail' onChange={(e) => registrationData({...signIn, 'email' : e.target.value})} />
+                <input type='text' className="input-register" placeholder='Insira seu e-mail' onChange={(e) => registrationData({...signIn, 'email' : e.target.value})} />
                 <br></br>
-                <input type='password' id='password' className='' placeholder='Informe uma senha numerica de 6 digitos' onChange={(e) => registrationData({...signIn, 'password' : e.target.value})} />
+                <input type='password' id='password' className="input-register" placeholder='Informe uma senha numerica de 6 digitos' onChange={(e) => registrationData({...signIn, 'password' : e.target.value})} />
                 <br></br>
-                <div>
-                    <input type="radio" className='select' value='cooker' name='role' onChange={(e) => registrationData({...signIn, 'role' : e.target.value})} /> 
+                <div className="cadastro">
                     <p>Cozinheiro(a)</p>
-                    <input type="radio" className='select' value='waiter' name='role' onChange={(e) => registrationData({...signIn, 'role' : e.target.value})} />
+                    <input type="radio" className='select' value='cooker' name='role' onChange={(e) => registrationData({...signIn, 'role' : e.target.value})} />
                     <p>Garçom/Garçonete</p>
+                    <input type="radio" className='select' value='waiter' name='role' onChange={(e) => registrationData({...signIn, 'role' : e.target.value})} />
                 </div>
                 <br></br>
-                <button id='btn-submit' className="button" type='submit' value='submit'>Cadastrar</button>
+                <button id='btn-submit' className="input-register" type='submit' value='submit'>Cadastrar</button>
                 <p>Se já for cadastrado, vá para o <Link to='/'>login</Link> </p>
             </form>
         </div>
+         
+        <footer id="footer">
+        <h4>Projeto feito na <a target="_blank" href="https://www.laboratoria.la/br">Laboratoria</a> por
+          <a className="footer-link" href="https://github.com/laris28" alt="Larissa Alborghette GitHub"> Larissa Alborghette</a> e	
+          <a className="footer-link" href="https://github.com/RobertaKelly" alt="Roberta Kelly GitHub"> Roberta Kelly</a> 	
+        </h4>	
+      </footer>
     </>
     );
 };
