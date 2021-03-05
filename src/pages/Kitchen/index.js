@@ -49,7 +49,7 @@ export const Kitchen = () => {
   return (
       <div className="menu">
         <div>
-            <div className="logo">
+            <div className="logo-cozinha">
               <Logo />
             </div>
         <table className='itens'>

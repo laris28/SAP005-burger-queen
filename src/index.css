@@ -42,13 +42,30 @@ code {
   margin: 30px;
 }
 
-input, .form-button, .button, .buttonMenu, .pedido, .input-login, .form-button-login, .input-register{
+input, .form-button, .button, .buttonMenu, .pedido, .input-login, .form-button-login{
   height: 5vh;
   width: 17vw;
   font-size: 1em;
   margin: 0.5em;
   border-radius: 10px;
   border: 3px solid
+}
+
+.input-register,.form-input-register{
+  height: 5vh;
+  width: 25vw;
+  font-size: 1em;
+  margin: 0.5em;
+  border-radius: 10px;
+  border: 3px solid;
+}
+
+.input-register{
+  margin-left: 100px;
+}
+
+.form-input-register{
+  margin-left: 150px;
 }
 
 .input-login{
@@ -64,7 +81,7 @@ input, .form-button, .button, .buttonMenu, .pedido, .input-login, .form-button-l
   width: 10vw;
 }
 
-.form-button, .button, .cafe, .buttonMenu, .pedido, .form-button-login{
+.form-button, .button, .cafe, .buttonMenu, .pedido, .form-button-login, .form-input-register{
   background-color: #000000;
   font-size: 16px;
   color: #ffffff;
@@ -75,11 +92,11 @@ input, .form-button, .button, .buttonMenu, .pedido, .input-login, .form-button-l
   width: 20vw
 }
 
-.form-button, .button, .buttonMenu, .form-button.login{
+.form-button, .button, .buttonMenu, .form-button.login, .form-input-register{
   height: 7vh;
 }
 
-.form-button, .button, .form-button.login{
+.form-button, .button, .form-button.login, .form-input-register{
   width: 19vw
 }
 
@@ -166,9 +183,28 @@ td{
   justify-content: space-around;
   align-items: center;
   align-content: stretch;
- 
+  margin-right: 70px;
 }
 
+.select{
+  margin: 0;
+}
+
+.texto-cadastro{
+  margin-left: 150px;
+}
+
+.logo-register{
+  margin-left: 130px;
+}
+
+.logo-cozinha{
+  margin-left: 120px;
+}
+
+.logo-menu{
+  margin-left: 370px;
+}
 
 @media (min-width: 768px) and (max-width: 979px) {
   .buttonMenu{
@@ -194,6 +230,10 @@ td{
     height: 10vh;
   }
 
+  .logo-register{
+    margin-left: 100px;
+  }
+
   .input-login{
     width: 40vw;
     padding-left: 20px;
@@ -201,6 +241,10 @@ td{
     font-size: 25px;
     margin-bottom: 0;
     margin-top: 15px;
+  }
+
+  .input-register, .form-input-register{
+    width: 400px;
 
   }
 
@@ -214,13 +258,30 @@ td{
     margin-bottom: 0;
   }
 
-  footer, p, .p-button{
+  footer, p, .p-button, .form-input-register, .input-register{
     font-size: 23px;
   }
 
   .cadastro{
     margin-right: 30px;
   }
+
+  .texto-cadastro{
+    margin-left: 75px;
+  }
+  
+  .form-input-register{
+    margin-left: 60px;
+  }
+
+  .input-register{
+    margin-left: 55px;
+  }
+
+  .logo-menu{
+    margin-left: 150px;
+  }
+
 }
 
 

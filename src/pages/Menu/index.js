@@ -139,7 +139,7 @@ export const Menu = () => {
         'Authorization': `${token}`
       },
       body: JSON.stringify({
-        'status': 'Pedido pronto'
+        'status': 'Pedido entregue'
       })
     })
     .then((response) => response.json())
@@ -155,7 +155,7 @@ export const Menu = () => {
       <div className="menu">
         <div className="App">
           <section>
-            <div className="logo">
+            <div className="logo-menu">
               <Logo />
             </div>
           </section>
