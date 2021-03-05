@@ -43,13 +43,14 @@ export const Login = () => {
     <>
       <div className="Login">
         <form className="login">	
-        <div className="logo">
+        <div className="logo-login">
               <Logo />
-            </div>          <input className="input" type="email" placeholder="Informe seu email" value={email} onChange={e=> setEmail(e.target.value)}/>
+            </div>          
+          <input className="input-login" type="email" placeholder="Informe seu email" value={email} onChange={e=> setEmail(e.target.value)}/>
           <br></br>
-          <input className="input" type="password" placeholder="Informe sua senha" value={password} onChange={e=> setPassword(e.target.value)}/>
+          <input className="input-login" type="password" placeholder="Informe sua senha" value={password} onChange={e=> setPassword(e.target.value)}/>
           <br></br>
-          <button className="form-button" type='submit' onClick={(e) => {
+          <button className="form-button-login" type='submit' onClick={(e) => {
             e.preventDefault();
             test();
           }}>Logar</button>
@@ -59,10 +60,10 @@ export const Login = () => {
       </div>
         
       <footer id="footer">
-        <p>Projeto feito na <a target="_blank" href="https://www.laboratoria.la/br">Laboratoria</a> por
+        <h4>Projeto feito na <a target="_blank" href="https://www.laboratoria.la/br">Laboratoria</a> por
           <a className="footer-link" href="https://github.com/laris28" alt="Larissa Alborghette GitHub"> Larissa Alborghette</a> e	
           <a className="footer-link" href="https://github.com/RobertaKelly" alt="Roberta Kelly GitHub"> Roberta Kelly</a> 	
-        </p>	
+        </h4>	
       </footer>
     </>   
   );

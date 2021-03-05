@@ -2,8 +2,10 @@ body {
   background-image: url("../src/pages/img/fundo.jpg");
   max-width: 100%;
   max-height: 100%;
+  margin: 0;
   background-size: cover;
   background-position: top center;
+  background-attachment: fixed;
   color: rgb(255, 255, 255);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -18,10 +20,8 @@ code {
 }
 
 .Login, .Register{
-  width: 100vw;
   height: 100vh;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-around;
 }
@@ -42,14 +42,21 @@ code {
   margin: 30px;
 }
 
-input, .form-button, .button, .buttonMenu, .pedido{
+input, .form-button, .button, .buttonMenu, .pedido, .input-login, .form-button-login, .input-register{
   height: 5vh;
   width: 17vw;
   font-size: 1em;
-  padding: 0 0.5em;
   margin: 0.5em;
   border-radius: 10px;
   border: 3px solid
+}
+
+.input-login{
+  margin-left: 25px;
+}
+
+.form-button-login{
+  margin-left: 30px;
 }
 
 .select{
@@ -57,7 +64,7 @@ input, .form-button, .button, .buttonMenu, .pedido{
   width: 10vw;
 }
 
-.form-button, .button, .cafe, .buttonMenu, .pedido{
+.form-button, .button, .cafe, .buttonMenu, .pedido, .form-button-login{
   background-color: #000000;
   font-size: 16px;
   color: #ffffff;
@@ -68,11 +75,11 @@ input, .form-button, .button, .buttonMenu, .pedido{
   width: 20vw
 }
 
-.form-button, .button, .buttonMenu{
+.form-button, .button, .buttonMenu, .form-button.login{
   height: 7vh;
 }
 
-.form-button, .button{
+.form-button, .button, .form-button.login{
   width: 19vw
 }
 
@@ -86,6 +93,18 @@ input, .form-button, .button, .buttonMenu, .pedido{
 }
 
 h1, h3, input, th, label, td, p, .p-bottom{
+  color: #000000;
+}
+
+h4{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+
+.p-login{
   color: #000000;
 }
 
@@ -108,7 +127,7 @@ h1, h3, input, th, label, td, p, .p-bottom{
 
 #footer a {
   color: rgb(255, 251, 2);
-  text-shadow: rgb(252, 249, 249) 1px 1px 1px;
+  text-shadow: rgb(255, 255, 255) 1px 1px 1px;
   font-weight: bold;
   transition: 0.3s ease-in-out;
   text-align: center;
@@ -137,8 +156,71 @@ td{
 
 .logo{
   width: 300px;
-  height: 200px;
+  height: 90px;
 }
 
+.cadastro{
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: stretch;
+ 
+}
+
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .buttonMenu{
+    height: 6vh;
+    width: 23vw
+  }
+
+  body{
+    font-size: 17px;
+  }
+
+  .login{
+    width: 50vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  .logo-login{
+    padding-left: 35px;
+    height: 10vh;
+  }
+
+  .input-login{
+    width: 40vw;
+    padding-left: 20px;
+    margin-left: 24px;
+    font-size: 25px;
+    margin-bottom: 0;
+    margin-top: 15px;
+
+  }
+
+  .form-button-login{
+    width: 40vw;
+    padding-left: 20px;
+    margin-left: 20px;
+    font-size: 25px;
+    margin-left: 35px;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  footer, p, .p-button{
+    font-size: 23px;
+  }
+
+  .cadastro{
+    margin-right: 30px;
+  }
+}
 
 
