@@ -58,6 +58,8 @@ Nossos usuários Garçom e Cozinheiro deve acessar os seguintes recuros :
 ##### História de usuário 1
 * O Usuário garçom ou garçonete deve ter seu perfil (login/senha) para acessar o sistema, poderá anotar o meu pedido saber o valor de cada produto adicinar e excluir, e enviar o pedido para a cozinha para ser preparado.
 
+![out](https://)
+
 ##### História de usuário 2
 * O Usuário Chefe de cozinha deve ter seu perfil (login/senha) para acessar o sistema, poderá ver os pedidos dos clientes em ordem, marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido está pronto para ser entregue ao cliente.
 
