@@ -7,6 +7,7 @@
 - [4. Considerações gerais](#4-considerações-gerais)
 - [5. História de usuário](#5-Garçom-e-chefe-de-Cozinha)
 - [6. Tecnologias utilizadas](#6-Tecnologias)
+- [7. Desenvolvedoras](#7-Desenvolveroras)
 
 
 
@@ -71,8 +72,10 @@ o garçom/garçonete receberá os pedidos que estão prontos visualizar o tempo 
 
 ##### Critérios de aceitação
 
-##### Definição de pronto
-
 ## 6. Tecnologias utilizadas
 
 HTML / CSS / JavaScript / Consumos de API/ ReactJs / React Hooks / React Router / GIT GitHub / Panejamento Trello (Metodologia ágil)
+
+## 7. Desenvolveroras
+Larissa Alberghette e Roberta Kelly  
+
