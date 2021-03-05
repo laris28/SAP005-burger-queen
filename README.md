@@ -4,9 +4,9 @@
 ## Índice
 
 - [1. Resumo do projeto](#1-resumo-do-projeto)
+- [2.]
 - [3. Desenvolvimento](#3-Desenvolvimento)
-- [4. Considerações gerais](#4-considerações-gerais)
-- [5. História de usuário](#5-Histórias-de-usuários)
+- [4. História de usuário](#5-Histórias-de-usuários)
 - [6. Tecnologias utilizadas](#6-Tecnologias)
 - [7. Desenvolvedoras](#7-Desenvolveroras)
 
@@ -29,6 +29,8 @@ Nossa interface mostra os dois menus (café da manhã e restante do dia), cada
 um com todos os seus produtos. O usuário deve poder escolher que produtos
 adicionar e a interface deve mostrar o resumo do pedido com o valor total.
 
+## 2.
+
 ![out](https://)
 
 ## 3. Desenvolvimento
@@ -36,10 +38,7 @@ adicionar e a interface deve mostrar o resumo do pedido com o valor total.
 Criamos uma interface web usando React. utilizando framework front-end, mantendo o interface em estado sincronizados. onde aprendemos o conceito de estado da tela, e cada mudança no estado e adicinado produtos para o pedido que será enviado para cozinha, a interface deve atualizar a lista de pedidos e o valor total.
 Para aplicação da API, foram efetuados testes no Postman onde obtemos componentes adicinados em nossa aplicação. 
 
-## 4. Considerações gerais
-
-
-## 5. Histórias de usuários
+## 4. Histórias de usuários
 
 ##### [Garçom e Chefe de Cozinha]
 
@@ -65,10 +64,10 @@ Nossos usuários Garçom e Cozinheiro deve acessar os seguintes recuros :
 * O garçom/garçonete receberá os pedidos que estão prontos visualizar o tempo de espera e entregá-los rapidamente aos clientes.
 
 
-## 6. Tecnologias utilizadas
+## 5. Tecnologias utilizadas
 
 * HTML / CSS / JavaScript / Consumos de API/ ReactJs / React Hooks / React Router / GIT GitHub / Panejamento Trello (Metodologia ágil)
 
-## 7. Desenvolveroras
+## 6. Desenvolveroras
  * Larissa Alberghette e Roberta Kelly  
 
