@@ -12,12 +12,11 @@
 
 ## 1. Resumo do projeto
 
-É uma pequena hambúrgueria que funciona 24hs, e está crescendo, devido a demanda de clientes, criamos um novo sistema de atendimento que facilita a realização dos pedidos utilizando um tablet, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente.
+Lab Burger é uma pequena hambúrgueria que funciona 24hs, e está crescendo, devido a grande demanda de clientes, criamos um novo sistema de atendimento que facilita a realização dos pedidos utilizando um tablet, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente.
 
 
 ![](https://user-images.githubusercontent.com/110297/42118136-996b4a52-7bc6-11e8-8a03-ada078754715.jpg)
 
-Estas são as informações que temos do cliente:
 
 > Somos **Lab Burger**, um fast food 24hrs.
 >
@@ -32,19 +31,17 @@ adicionar e a interface deve mostrar o resumo do pedido com o valor total.
 
 ## 3. Objetivos de aprendizagem
 
-Criamos uma interface web usando React. utilizando framework front-end , mantendo o interface em estado sincronizados. onde aprendemos o conceito de estado da tela, e cada mudança no estado será adicinado produtos para o pedido que será  enviado para cozinha, a interface deve atualizar a lista de pedidos e o valor total.
-
+Criamos uma interface web usando React. utilizando framework front-end, mantendo o interface em estado sincronizados. onde aprendemos o conceito de estado da tela, e cada mudança no estado e adicinado produtos para o pedido que será  enviado para cozinha, a interface deve atualizar a lista de pedidos e o valor total.
+Para aplicação da API, foram efetuados testes no Postman onde obtemos componentes adicinados em nossa aplicação. 
 
 ## 4. Considerações gerais
 
-Recomendamos que o deploy seja feito utilizando [Heroku](https://www.heroku.com/), [Netlify](https://www.netlify.com/) ou [Vercel](https://vercel.com/).
 
-
-## 5. História de usuário
+## 5. Histórias de usuários
 
 ##### [Garçom e Chefe de Cozinha]
 
-Nosso usuário Garçom e Cozinheiro deve acessar os seguintes recuros :
+Nossos usuários Garçom e Cozinheiro deve acessar os seguintes recuros :
 
 - login e senha.
 - Registar tipo de usuário (cozinha / salão), login e senha.
@@ -54,18 +51,21 @@ Nosso usuário Garçom e Cozinheiro deve acessar os seguintes recuros :
 - Excluir produtos.
 - Ver resumo e o total da compra.
 - Enviar o pedido para a cozinha (guardar em algum banco de dados).
-- Funcionar bem e se adequar a um _tablet_.
+- Funcionar bem e se adequar a um tablet .
 
-O garçom ou garçonete poderá anotar o meu pedido saber o valor de cada produto e poder enviar o pedido para a cozinha para ser preparado.
+##### História de usuário 1
+ O Usuário garçom ou garçonete deve ter seu perfil (login/senha) para acessar o sistema, poderá anotar o meu pedido saber o valor de cada produto adicinar e excluir, e enviar o pedido para a cozinha para ser preparado.
 
-O chefe de cozinha poderá ver os pedidos dos clientes em ordem, marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido está pronto para ser entregue ao cliente.
+##### História de usuário 2
+O Usuário Chefe de cozinha deve ter seu perfil (login/senha) para acessar o sistema, poderá ver os pedidos dos clientes em ordem, marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido está pronto para ser entregue ao cliente.
 
-o garçom/garçonete receberá os pedidos que estão prontos para entregá-los rapidamente aos clientes.
+##### História de usuário 1
+o garçom/garçonete receberá os pedidos que estão prontos visualizar o tempo de espera e entregá-los rapidamente aos clientes.
 
 
 ##### [Garçom e Chefe de Cozinha]
 
-##### Definição de pronto
+
 
 ##### Critérios de aceitação
 
@@ -75,4 +75,4 @@ o garçom/garçonete receberá os pedidos que estão prontos para entregá-los r
 
 ## 6. Tecnologias utilizadas
 
-HTML / CSS / JavaScript / Consumos de API/ ReactJs / GIT GitHub / Panejamento Trello (Metodologia ágil)
+HTML / CSS / JavaScript / Consumos de API/ ReactJs / React Hooks / React Router / GIT GitHub / Panejamento Trello (Metodologia ágil)

@@ -298,7 +298,7 @@ return (
                     <td>{produto.Products.map((item)=>(
                           <>
                             <td> {item.qtd}</td>
-                            <td> {item.name},</td>
+                            <td> {item.name}</td>
                           </>
                         ))}</td> 
                     <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stopwatch-fill" viewBox="0 0 16 16">
