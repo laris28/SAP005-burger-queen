@@ -29,7 +29,7 @@ Nossa interface mostra os dois menus (café da manhã e restante do dia), cada
 um com todos os seus produtos. O usuário deve poder escolher que produtos
 adicionar e a interface deve mostrar o resumo do pedido com o valor total.
 
-![out](https://user-images.githubusercontent.com/110297/45984241-b8b51c00-c025-11e8-8fa4-a390016bee9d.gif)
+![out](https://)
 
 ## 3. Objetivos de aprendizagem
 
@@ -45,30 +45,30 @@ Para aplicação da API, foram efetuados testes no Postman onde obtemos componen
 
 Nossos usuários Garçom e Cozinheiro deve acessar os seguintes recuros :
 
-- login e senha.
-- Registar tipo de usuário (cozinha / salão), login e senha.
-- Entrar na tela correta para cada usuário.
-- Anotar o nome e mesa.
-- Adicionar produtos aos pedidos.
-- Excluir produtos.
-- Ver resumo e o total da compra.
-- Enviar o pedido para a cozinha (guardar em algum banco de dados).
-- Funcionar bem e se adequar a um tablet .
+* login e senha.
+* Registar tipo de usuário (cozinha / salão), login e senha.
+* Entrar na tela correta para cada usuário.
+* Anotar o nome e mesa.
+* Adicionar produtos aos pedidos.
+* Excluir produtos.
+* Ver resumo e o total da compra.
+* Enviar o pedido para a cozinha (guardar em algum banco de dados).
+* Funcionar bem e se adequar a um tablet .
 
 ##### História de usuário 1
- O Usuário garçom ou garçonete deve ter seu perfil (login/senha) para acessar o sistema, poderá anotar o meu pedido saber o valor de cada produto adicinar e excluir, e enviar o pedido para a cozinha para ser preparado.
+* O Usuário garçom ou garçonete deve ter seu perfil (login/senha) para acessar o sistema, poderá anotar o meu pedido saber o valor de cada produto adicinar e excluir, e enviar o pedido para a cozinha para ser preparado.
 
 ##### História de usuário 2
-O Usuário Chefe de cozinha deve ter seu perfil (login/senha) para acessar o sistema, poderá ver os pedidos dos clientes em ordem, marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido está pronto para ser entregue ao cliente.
+* O Usuário Chefe de cozinha deve ter seu perfil (login/senha) para acessar o sistema, poderá ver os pedidos dos clientes em ordem, marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido está pronto para ser entregue ao cliente.
 
 ##### História de usuário 3
-o garçom/garçonete receberá os pedidos que estão prontos visualizar o tempo de espera e entregá-los rapidamente aos clientes.
+* O garçom/garçonete receberá os pedidos que estão prontos visualizar o tempo de espera e entregá-los rapidamente aos clientes.
 
 
 ## 6. Tecnologias utilizadas
 
-HTML / CSS / JavaScript / Consumos de API/ ReactJs / React Hooks / React Router / GIT GitHub / Panejamento Trello (Metodologia ágil)
+* HTML / CSS / JavaScript / Consumos de API/ ReactJs / React Hooks / React Router / GIT GitHub / Panejamento Trello (Metodologia ágil)
 
 ## 7. Desenvolveroras
-Larissa Alberghette e Roberta Kelly  
+ * Larissa Alberghette e Roberta Kelly  
 
