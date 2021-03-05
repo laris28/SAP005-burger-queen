@@ -4,21 +4,16 @@
 ## Índice
 
 - [1. Resumo do projeto](#1-resumo-do-projeto)
-- [2.]
-- [3. Desenvolvimento](#3-Desenvolvimento)
-- [4. História de usuário](#5-Histórias-de-usuários)
-- [6. Tecnologias utilizadas](#6-Tecnologias)
-- [7. Desenvolvedoras](#7-Desenvolveroras)
+- [2. Desenvolvimento](#3-Desenvolvimento)
+- [3. História de usuário](#5-Histórias-de-usuários)
+- [4. Tecnologias utilizadas](#6-Tecnologias)
+- [5. Desenvolvedoras](#7-Desenvolveroras)
 
 
 
 ## 1. Resumo do projeto
 
 Lab Burger é uma pequena hambúrgueria que funciona 24hs, e está crescendo, devido a grande demanda de clientes, criamos um novo sistema de atendimento que facilita a realização dos pedidos utilizando um tablet, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente.
-
-
-![](https://)
-
 
 > Somos **Lab Burger**, um fast food 24hrs.
 >
@@ -29,16 +24,12 @@ Nossa interface mostra os dois menus (café da manhã e restante do dia), cada
 um com todos os seus produtos. O usuário deve poder escolher que produtos
 adicionar e a interface deve mostrar o resumo do pedido com o valor total.
 
-## 2.
-
-![out](https://)
-
-## 3. Desenvolvimento
+## 2. Desenvolvimento
 
 Criamos uma interface web usando React. utilizando framework front-end, mantendo o interface em estado sincronizados. onde aprendemos o conceito de estado da tela, e cada mudança no estado e adicinado produtos para o pedido que será enviado para cozinha, a interface deve atualizar a lista de pedidos e o valor total.
 Para aplicação da API, foram efetuados testes no Postman onde obtemos componentes adicinados em nossa aplicação. 
 
-## 4. Histórias de usuários
+## 3. Histórias de usuários
 
 ##### [Garçom e Chefe de Cozinha]
 
@@ -57,17 +48,22 @@ Nossos usuários Garçom e Cozinheiro deve acessar os seguintes recuros :
 ##### História de usuário 1
 * O Usuário garçom ou garçonete deve ter seu perfil (login/senha) para acessar o sistema, poderá anotar o meu pedido saber o valor de cada produto adicinar e excluir, e enviar o pedido para a cozinha para ser preparado.
 
+![](https://github.com/laris28/SAP005-burger-queen/blob/5df1b35801f2ddc3c7894100b15d2f33296f6a1b/src/Pedro%20garçom%20logado%20faz%20pedido%20.gif)
+
 ##### História de usuário 2
 * O Usuário Chefe de cozinha deve ter seu perfil (login/senha) para acessar o sistema, poderá ver os pedidos dos clientes em ordem, marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido está pronto para ser entregue ao cliente.
+
+![out](https://github.com/laris28/SAP005-burger-queen/blob/5df1b35801f2ddc3c7894100b15d2f33296f6a1b/src/Juca%20Cozinha%20recebe%20pedido%20.gif)
 
 ##### História de usuário 3
 * O garçom/garçonete receberá os pedidos que estão prontos visualizar o tempo de espera e entregá-los rapidamente aos clientes.
 
+![](https://github.com/laris28/SAP005-burger-queen/blob/5df1b35801f2ddc3c7894100b15d2f33296f6a1b/src/Pedro%20recebe%20pedido%20da%20cozinha%20.gif)
 
-## 5. Tecnologias utilizadas
+## 4. Tecnologias utilizadas
 
 * HTML / CSS / JavaScript / Consumos de API/ ReactJs / React Hooks / React Router / GIT GitHub / Panejamento Trello (Metodologia ágil)
 
-## 6. Desenvolveroras
+## 5. Desenvolveroras
  * Larissa Alberghette e Roberta Kelly  
 
