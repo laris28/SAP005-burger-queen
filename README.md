@@ -1,11 +1,12 @@
 # Lab Burger 
+![](https://github.com/laris28/SAP005-burger-queen/blob/035064274431dc07df43079f3ebcaa634104c98d/src/pages/img/logo.png)
 
 ## Índice
 
 - [1. Resumo do projeto](#1-resumo-do-projeto)
 - [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
 - [4. Considerações gerais](#4-considerações-gerais)
-- [5. História de usuário](#5-Garçom-e-chefe-de-Cozinha)
+- [5. História de usuário](#5-Histórias-de-usuários)
 - [6. Tecnologias utilizadas](#6-Tecnologias)
 - [7. Desenvolvedoras](#7-Desenvolveroras)
 
@@ -16,7 +17,7 @@
 Lab Burger é uma pequena hambúrgueria que funciona 24hs, e está crescendo, devido a grande demanda de clientes, criamos um novo sistema de atendimento que facilita a realização dos pedidos utilizando um tablet, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente.
 
 
-![](https://user-images.githubusercontent.com/110297/42118136-996b4a52-7bc6-11e8-8a03-ada078754715.jpg)
+![](https://)
 
 
 > Somos **Lab Burger**, um fast food 24hrs.
@@ -60,17 +61,9 @@ Nossos usuários Garçom e Cozinheiro deve acessar os seguintes recuros :
 ##### História de usuário 2
 O Usuário Chefe de cozinha deve ter seu perfil (login/senha) para acessar o sistema, poderá ver os pedidos dos clientes em ordem, marcar que estão prontos e poder notificar os garçons/garçonetes que o pedido está pronto para ser entregue ao cliente.
 
-##### História de usuário 1
+##### História de usuário 3
 o garçom/garçonete receberá os pedidos que estão prontos visualizar o tempo de espera e entregá-los rapidamente aos clientes.
 
-
-##### [Garçom e Chefe de Cozinha]
-
-
-
-##### Critérios de aceitação
-
-##### Critérios de aceitação
 
 ## 6. Tecnologias utilizadas
 
