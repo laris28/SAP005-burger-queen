@@ -1,7 +1,6 @@
 import { Link, useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
-// import axios from 'axios';
-
+import Logo from "../Components/logo";
 
 export const Register = () => {
     const [signIn, registrationData] = useState({'restaurant': 'burguer queen'});
@@ -37,7 +36,9 @@ export const Register = () => {
         <>
         <div className="Register">
             <form className="register" onSubmit={sendRegistration}>
-                <h1>LAB BURGER</h1>
+                <div className="logo">
+                    <Logo />
+                </div>                
                 <input type='text' className='userInput' placeholder='Nome do usuario' onChange={(e) => registrationData({...signIn, 'name' : e.target.value})} />
                 <br></br>
                 <input type='text' className='emailInput' placeholder='Insira seu e-mail' onChange={(e) => registrationData({...signIn, 'email' : e.target.value})} />
@@ -54,6 +55,12 @@ export const Register = () => {
                 <button id='btn-submit' className="button" type='submit' value='submit'>Cadastrar</button>
                 <p>Se já for cadastrado, vá para o <Link to='/'>login</Link> </p>
             </form>
+            <footer id="footer">
+                <p>Projeto feito na <a target="_blank" href="https://www.laboratoria.la/br">Laboratoria</a> por
+                    <a className="footer-link" href="https://github.com/laris28" alt="Larissa Alborghette GitHub"> Larissa Alborghette</a> e	
+                    <a className="footer-link" href="https://github.com/RobertaKelly" alt="Roberta Kelly GitHub"> Roberta Kelly</a> 	
+                </p>	
+             </footer>
         </div>
     </>
     );
