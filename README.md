@@ -13,15 +13,8 @@
 
 ## 1. Resumo do projeto
 
-Lab Burger é uma pequena hambúrgueria que funciona 24hs, e está crescendo, devido a grande demanda de clientes, criamos um novo sistema de atendimento que facilita a realização dos pedidos utilizando um tablet, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente.
-
-> Somos **Lab Burger**, um fast food 24hrs.
->
-> A nossa proposta de serviço 24 horas foi muito bem recebida e, para continuar a
-> crescer, utilizamos o sistema que nos ajuda a receber pedidos de nossos
-> clientes.
-Nossa interface mostra os dois menus (café da manhã e restante do dia), cada
-um com todos os seus produtos. O usuário deve poder escolher que produtos
+**Lab Burger** é uma pequena hambúrgueria que funciona 24hs, e está crescendo, devido a grande demanda de clientes, criamos um novo sistema de atendimento que facilita a realização dos pedidos utilizando um tablet, e enviá-los para a cozinha para que sejam preparados de forma ordenada e eficiente.
+Nossa interface mostra os dois menus (café da manhã e restante do dia), cada um com todos os seus produtos. O usuário deve poder escolher que produtos
 adicionar e a interface deve mostrar o resumo do pedido com o valor total.
 
 ## 2. Desenvolvimento
