@@ -4,7 +4,7 @@
 ## Índice
 
 - [1. Resumo do projeto](#1-resumo-do-projeto)
-- [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
+- [3. Desenvolvimento](#3-Desenvolvimento)
 - [4. Considerações gerais](#4-considerações-gerais)
 - [5. História de usuário](#5-Histórias-de-usuários)
 - [6. Tecnologias utilizadas](#6-Tecnologias)
@@ -31,9 +31,9 @@ adicionar e a interface deve mostrar o resumo do pedido com o valor total.
 
 ![out](https://)
 
-## 3. Objetivos de aprendizagem
+## 3. Desenvolvimento
 
-Criamos uma interface web usando React. utilizando framework front-end, mantendo o interface em estado sincronizados. onde aprendemos o conceito de estado da tela, e cada mudança no estado e adicinado produtos para o pedido que será  enviado para cozinha, a interface deve atualizar a lista de pedidos e o valor total.
+Criamos uma interface web usando React. utilizando framework front-end, mantendo o interface em estado sincronizados. onde aprendemos o conceito de estado da tela, e cada mudança no estado e adicinado produtos para o pedido que será enviado para cozinha, a interface deve atualizar a lista de pedidos e o valor total.
 Para aplicação da API, foram efetuados testes no Postman onde obtemos componentes adicinados em nossa aplicação. 
 
 ## 4. Considerações gerais
